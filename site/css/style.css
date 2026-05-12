@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* ФИКС: чтобы подвал всегда был внизу */
+/* ЖЁСТКИЙ ФИКС ДЛЯ ПОДВАЛА */
 html {
     height: 100%;
 }
@@ -17,12 +17,12 @@ body {
     background-size: 30px 30px;
     color: #c0c0c0;
     line-height: 1.5;
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
 }
 
-/* ШАПКА — МЕТАЛЛИЧЕСКАЯ ПЛАСТИНА */
+/* ШАПКА */
 header {
     background: #0a0a0a;
     border-bottom: 2px solid #6b3a1f;
@@ -98,7 +98,7 @@ nav {
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 5px rgba(139, 90, 43, 0.3);
 }
 
-/* ОСНОВНОЙ КОНТЕНТ — РАСТЯГИВАЕТСЯ, ПРИЖИМАЯ ПОДВАЛ */
+/* ОСНОВНОЙ КОНТЕНТ — РАСТЯГИВАЕТСЯ */
 main {
     flex: 1 0 auto;
 }
@@ -311,17 +311,18 @@ main {
     text-decoration: none;
 }
 
-/* ПОДВАЛ — ТЕПЕРЬ ТОЧНО ВНИЗУ */
+/* ПОДВАЛ — ПРИНУДИТЕЛЬНО ВНИЗУ */
 footer {
     background: #050505;
     border-top: 1px solid #3a2a1a;
-    padding: 0.8rem;
+    padding: 1rem;
     text-align: center;
-    font-size: 0.6rem;
-    color: #5a5a5a;
+    font-size: 0.65rem;
+    color: #6a6a6a;
     font-family: monospace;
     flex-shrink: 0;
     margin-top: auto;
+    width: 100%;
 }
 
 footer .container {
@@ -330,8 +331,8 @@ footer .container {
 
 .footer-tags {
     margin-top: 0.3rem;
-    font-size: 0.55rem;
-    color: #4a4a4a;
+    font-size: 0.6rem;
+    color: #5a5a5a;
 }
 
 /* АДАПТАЦИЯ */
