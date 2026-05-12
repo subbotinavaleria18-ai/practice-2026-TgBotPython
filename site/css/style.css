@@ -5,7 +5,8 @@
     box-sizing: border-box;
 }
 
-html, body {
+/* ФИКС: чтобы подвал всегда был внизу */
+html {
     height: 100%;
 }
 
@@ -16,9 +17,9 @@ body {
     background-size: 30px 30px;
     color: #c0c0c0;
     line-height: 1.5;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 /* ШАПКА — МЕТАЛЛИЧЕСКАЯ ПЛАСТИНА */
@@ -29,6 +30,7 @@ header {
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
 }
 
 .header-container {
@@ -96,9 +98,9 @@ nav {
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.5), 0 0 5px rgba(139, 90, 43, 0.3);
 }
 
-/* ОСНОВНОЙ КОНТЕЙНЕР — РАСТЯГИВАЕТСЯ, ЧТОБЫ ПРИЖИМАТЬ ПОДВАЛ */
+/* ОСНОВНОЙ КОНТЕНТ — РАСТЯГИВАЕТСЯ, ПРИЖИМАЯ ПОДВАЛ */
 main {
-    flex: 1;
+    flex: 1 0 auto;
 }
 
 .container {
@@ -151,7 +153,7 @@ main {
 }
 
 /* КАРТОЧКИ */
-.cards-grid, .team-grid, .resources-grid {
+.cards-grid, .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.2rem;
@@ -274,6 +276,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
+    margin-bottom: 2rem;
 }
 
 .resource-item {
@@ -308,16 +311,17 @@ main {
     text-decoration: none;
 }
 
-/* ПОДВАЛ — ТЕПЕРЬ ВСЕГДА ВНИЗУ */
+/* ПОДВАЛ — ТЕПЕРЬ ТОЧНО ВНИЗУ */
 footer {
     background: #050505;
     border-top: 1px solid #3a2a1a;
-    margin-top: 2rem;
     padding: 0.8rem;
     text-align: center;
     font-size: 0.6rem;
     color: #5a5a5a;
     font-family: monospace;
+    flex-shrink: 0;
+    margin-top: auto;
 }
 
 footer .container {
@@ -339,7 +343,7 @@ footer .container {
     .hero h1 {
         font-size: 1.2rem;
     }
-    .cards-grid, .team-grid, .resources-grid {
+    .cards-grid, .team-grid {
         grid-template-columns: 1fr;
     }
 }
