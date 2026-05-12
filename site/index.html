@@ -1,1 +1,175 @@
-Првиет
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стимлиф — симулятор раздачи листовок</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="images/logo.png" alt="Лого" class="logo-img">
+            <span>СТИМЛИФ</span>
+        </div>
+        <div class="nav-links">
+            <button onclick="showPage('home')" class="nav-btn active-nav">Главная</button>
+            <button onclick="showPage('gameplay')" class="nav-btn">Геймплей</button>
+            <button onclick="showPage('team')" class="nav-btn">Участники</button>
+            <button onclick="showPage('news')" class="nav-btn">Новости</button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container" id="pageContainer">
+        
+        <!-- ГЛАВНАЯ: описание игры и сюжет -->
+        <div id="home" class="page active-page">
+            <div class="hero">
+                <h1>Симулятор раздачи листовок</h1>
+                <p>Вы — промоутер. Ваша цель: выжить в городе, раздать кипу листовок и не сойти с ума.</p>
+            </div>
+
+            <div class="info-block">
+                <h2>🎮 О чём игра</h2>
+                <p>Сатирический симулятор повседневности, где вы играете за уличного промоутера. Вам предстоит раздавать листовки прохожим, зарабатывать деньги и справляться с абсурдными ситуациями.</p>
+            </div>
+
+            <div class="info-block">
+                <h2>📖 Основной сюжет</h2>
+                <p>Молодой специалист устраивается промоутером, чтобы свести концы с концами. Каждый новый день — испытание: странные прохожие, требовательный начальник, поломанные автоматы. Сможете ли вы выполнить план и не потерять рассудок?</p>
+            </div>
+
+            <div class="info-block">
+                <h2>⚙️ Ключевые особенности</h2>
+                <ul>
+                    <li>Система выносливости и статусы</li>
+                    <li>QTE-события (турник, рывок за автобусом)</li>
+                    <li>Нелинейные диалоги с NPC</li>
+                    <li>Экономика: деньги и энергия</li>
+                    <li>Визуальный стиль Mixed Media (2D персонажи в 3D мире)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ГЕЙМПЛЕЙ: кратко о механиках -->
+        <div id="gameplay" class="page">
+            <div class="hero">
+                <h1>Геймплей</h1>
+                <p>Раздавай листовки, качай выносливость, выбирай реплики</p>
+            </div>
+
+            <div class="info-block">
+                <h2>🏋️ Выносливость</h2>
+                <p>Статус «Слабость» — скорость падает на 10%, выносливость на 20%. Статус «Скорость» — скорость +20%.</p>
+            </div>
+
+            <div class="info-block">
+                <h2>📄 Листовки</h2>
+                <p>QTE-ивент «Турник»: чем больше подтягиваний, тем больше листовок вы можете носить.</p>
+            </div>
+
+            <div class="info-block">
+                <h2>🗣️ Диалоги</h2>
+                <p>Выбор реплик влияет на реакцию NPC и вашу репутацию. Будьте вежливы — или нет.</p>
+            </div>
+
+            <div class="video-block">
+                <p>📺 <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank">Смотреть геймплей (Google Drive)</a></p>
+            </div>
+        </div>
+
+        <!-- УЧАСТНИКИ: кратко, без подробностей -->
+        <div id="team" class="page">
+            <div class="hero">
+                <h1>Участники проекта</h1>
+                <p>26 студентов Московского Политеха</p>
+            </div>
+
+            <div class="team-categories">
+                <div class="cat">
+                    <h3>💻 Программисты</h3>
+                    <p>Николаенков, Плетнева, Попова, Субботина</p>
+                </div>
+                <div class="cat">
+                    <h3>🎨 Художники (2D/3D)</h3>
+                    <p>Бирюков, Гагарина, Гарченко, Кныш, Козырева, Крутяков, Лагутенко, Саяхова, Смирнова, Троешестова, Чиркова</p>
+                </div>
+                <div class="cat">
+                    <h3>✍️ Сценаристы</h3>
+                    <p>Баранов, Попов</p>
+                </div>
+                <div class="cat">
+                    <h3>🎮 Гейм-дизайнеры</h3>
+                    <p>Плешков, Самодуровский</p>
+                </div>
+                <div class="cat">
+                    <h3>🎨 Графические дизайнеры</h3>
+                    <p>Каримбаева, Кинёв</p>
+                </div>
+                <div class="cat">
+                    <h3>📢 Менеджеры по продвижению</h3>
+                    <p>Бородина, Власова, Морев</p>
+                </div>
+                <div class="cat">
+                    <h3>🔊 Звукорежиссёр</h3>
+                    <p>Кономанина</p>
+                </div>
+                <div class="cat">
+                    <h3>📄 Технический писатель</h3>
+                    <p>Лыхин</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- НОВОСТИ: 3 короткие записи -->
+        <div id="news" class="page">
+            <div class="hero">
+                <h1>Новости</h1>
+                <p>Как идёт разработка</p>
+            </div>
+
+            <div class="news-item">
+                <div class="news-date">15 апреля 2026</div>
+                <div class="news-title">Готова пояснительная записка</div>
+                <p>Завершена документация. Подтверждена патентная чистота проекта.</p>
+            </div>
+
+            <div class="news-item">
+                <div class="news-date">5 апреля 2026</div>
+                <div class="news-title">Первый играбельный прототип</div>
+                <p>MVP включает локации, диалоги и систему выносливости. Тесты прошли успешно.</p>
+            </div>
+
+            <div class="news-item">
+                <div class="news-date">10 марта 2026</div>
+                <div class="news-title">Презентация в Московском Политехе</div>
+                <p>Проект представлен на Дне открытых дверей. Получен положительный отклик.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>Московский Политех | Проектная деятельность — «Стимлиф»</p>
+</footer>
+
+<script>
+    function showPage(pageId) {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active-page'));
+        document.getElementById(pageId).classList.add('active-page');
+        
+        const btns = document.querySelectorAll('.nav-btn');
+        btns.forEach(btn => btn.classList.remove('active-nav'));
+        event.target.classList.add('active-nav');
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
