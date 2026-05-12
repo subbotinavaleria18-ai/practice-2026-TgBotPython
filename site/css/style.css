@@ -1,4 +1,4 @@
-/* Стили для сайта Стимлиф — компактная шапка */
+/* Стили для сайта Стимлиф — Мрачная, серая тема (нуар) */
 * {
     margin: 0;
     padding: 0;
@@ -6,25 +6,25 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #0a0f1a;
-    color: #eef2ff;
-    line-height: 1.5;
+    font-family: 'Segoe UI', 'Courier New', monospace;
+    background: #1a1a1a; /* Глубокий серый фон */
+    color: #d4d4d4;
+    line-height: 1.6;
 }
 
-/* ===== УМЕНЬШЕННАЯ ШАПКА ===== */
+/* ШАПКА */
 header {
-    background: #0f1422;
-    border-bottom: 1px solid #2a2f45;
+    background: #0f0f0f;
+    border-bottom: 1px solid #333;
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
 .header-container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0.4rem 1rem;  /* Уменьшено с 0.6rem на 0.4rem */
+    padding: 0.3rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,57 +34,59 @@ header {
 
 .logo {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 0.3rem;
-    font-size: 1rem;  /* Уменьшено с 1.2rem */
-    font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 
 .logo-icon {
-    font-size: 1.2rem;  /* Уменьшено с 1.4rem */
+    font-size: 1.2rem;
 }
 
 .logo-text {
-    color: #ff7b4a;
+    color: #b0b0b0;
 }
 
 nav {
     display: flex;
     gap: 0.2rem;
-    flex-wrap: wrap;
 }
 
 .nav-btn {
     background: none;
     border: none;
-    color: #cbd5ff;
-    font-size: 0.85rem;  /* Уменьшено с 0.9rem */
+    color: #a0a0a0;
+    font-size: 0.75rem;
     font-weight: 500;
-    padding: 0.3rem 0.8rem;  /* Уменьшено */
-    border-radius: 40px;
+    padding: 0.3rem 0.7rem;
+    border-radius: 20px;
     cursor: pointer;
     transition: 0.2s;
     font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .nav-btn:hover {
-    color: #ff7b4a;
-    background: rgba(255, 123, 74, 0.1);
+    color: #cfcfcf;
+    background: #2a2a2a;
 }
 
 .nav-btn.active {
-    color: #ff7b4a;
-    background: rgba(255, 123, 74, 0.15);
+    color: #cfcfcf;
+    background: #2a2a2a;
 }
 
-/* Контейнер — уменьшен отступ сверху, чтобы контент не уезжал под шапку */
+/* ОСНОВНОЙ КОНТЕЙНЕР */
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0.8rem 1rem 1.5rem;  /* Уменьшен отступ сверху */
+    padding: 1rem;
 }
 
-/* Страницы (вкладки) */
+/* СТРАНИЦЫ */
 .page {
     display: none;
     animation: fade 0.2s ease;
@@ -99,89 +101,98 @@ nav {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero-блок — уменьшен отступ сверху */
+/* Hero-блок (заголовок страницы) */
 .hero {
-    background: linear-gradient(145deg, #12172b, #0b0f1a);
-    border-radius: 20px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    margin-top: 0;  /* Убран лишний отступ сверху */
-    text-align: center;
-    border: 1px solid #2a2f45;
+    background: #242424;
+    border-left: 4px solid #6a6a6a;
+    padding: 1.2rem 1.5rem;
+    margin: 0 0 2rem 0;
 }
 
 .hero h1 {
     font-size: 1.8rem;
-    color: #ff7b4a;
-    margin-bottom: 0.5rem;
+    color: #c0c0c0;
+    margin-bottom: 0.3rem;
+    font-weight: 400;
+    letter-spacing: -0.5px;
 }
 
 .hero p {
-    font-size: 1rem;
-    color: #cbd5ff;
+    font-size: 0.9rem;
+    color: #888;
 }
 
-/* Карточки */
-.cards-grid, .team-grid {
+/* КАРТОЧКИ (общие) */
+.cards-grid, .team-grid, .resources-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.3rem;
+    gap: 1.5rem;
     margin: 1.5rem 0;
 }
 
-.card, .team-card, .news-card {
-    background: #111622;
-    border-radius: 18px;
-    padding: 1.3rem;
-    border: 1px solid #2a2f45;
+.card, .team-card, .resource-card {
+    background: #1f1f1f;
+    border: 1px solid #2e2e2e;
+    padding: 1.2rem;
     transition: 0.2s;
 }
 
-.card:hover, .team-card:hover, .news-card:hover {
-    transform: translateY(-3px);
-    border-color: #ff7b4a;
+.card:hover, .team-card:hover, .resource-card:hover {
+    border-color: #5a5a5a;
+    background: #252525;
 }
 
-.card h2, .team-card h3, .news-card h2 {
-    color: #ff7b4a;
-    margin-bottom: 0.7rem;
+.card h2, .team-card h3, .resource-card h3 {
+    color: #b8b8b8;
+    margin-bottom: 0.8rem;
     font-size: 1.2rem;
+    font-weight: 500;
+    border-bottom: 1px solid #333;
+    display: inline-block;
+    padding-bottom: 0.2rem;
 }
 
 .card p, .team-card p {
-    color: #cbd5ff;
-    font-size: 0.95rem;
+    color: #aaa;
+    font-size: 0.9rem;
 }
 
 .features-list {
     margin-left: 1.2rem;
-    color: #cbd5ff;
+    color: #aaa;
+    font-size: 0.85rem;
 }
 
 .features-list li {
     margin: 0.4rem 0;
 }
 
-/* Блок со ссылкой */
-.demo-block {
-    background: #0e1320;
-    border-radius: 18px;
-    padding: 1.2rem;
-    text-align: center;
-    margin: 1.5rem 0;
-    border: 1px solid #2a2f45;
+/* ВКЛАД КАЖДОГО УЧАСТНИКА */
+.team-contribution-list {
+    margin-top: 0.8rem;
+    padding-left: 0;
+    list-style: none;
 }
 
-.demo-block a {
-    color: #ff7b4a;
-    text-decoration: none;
+.team-contribution-list li {
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 0.15rem;
 }
 
-.demo-block a:hover {
-    text-decoration: underline;
+.team-name {
+    font-weight: 600;
+    color: #ccc;
 }
 
-/* Новости */
+.team-role {
+    font-size: 0.7rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* НОВОСТИ */
 .news-list {
     display: flex;
     flex-direction: column;
@@ -190,56 +201,105 @@ nav {
 }
 
 .news-card {
-    padding: 1.2rem;
+    background: #1b1b1b;
+    border-left: 3px solid #555;
+    padding: 1rem 1.2rem;
 }
 
 .news-date {
-    display: inline-block;
+    color: #777;
     font-size: 0.7rem;
+    margin-bottom: 0.2rem;
     text-transform: uppercase;
-    color: #ff7b4a;
-    margin-bottom: 0.3rem;
-    font-weight: 600;
 }
 
 .news-title {
     font-size: 1.1rem;
-    margin-bottom: 0.4rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    color: #c6c6c6;
 }
 
-/* Подвал */
+/* РЕСУРСЫ — СПИСОК ССЫЛОК */
+.resource-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.resource-link {
+    background: #1a1a1a;
+    padding: 0.7rem 1rem;
+    border-left: 2px solid #555;
+}
+
+.resource-link a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.resource-link a:hover {
+    color: #ddd;
+    text-decoration: underline;
+}
+
+/* ДЕМО-БЛОК ДЛЯ ВИДЕО */
+.demo-block {
+    background: #181818;
+    padding: 1rem;
+    text-align: center;
+    margin: 2rem 0;
+    border: 1px solid #2e2e2e;
+}
+
+.demo-block a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.demo-block a:hover {
+    color: #ccc;
+}
+
+/* ИЛЛЮСТРАЦИИ (СХЕМЫ) */
+.scheme-placeholder {
+    background: #111;
+    border: 1px dashed #444;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.scheme-placeholder svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ПОДВАЛ */
 footer {
-    background: #0b101a;
-    border-top: 1px solid #2a2f45;
+    background: #0c0c0c;
+    border-top: 1px solid #2a2a2a;
     margin-top: 2rem;
     padding: 1rem;
     text-align: center;
-    font-size: 0.75rem;
-    color: #7f8aa8;
+    font-size: 0.7rem;
+    color: #666;
 }
 
-/* Телефоны */
+/* АДАПТАЦИЯ */
 @media (max-width: 700px) {
     .header-container {
         flex-direction: column;
         text-align: center;
-        padding: 0.3rem 1rem;
     }
-    
-    .hero {
-        padding: 1.2rem;
-        margin-top: 0;
-    }
-    
     .hero h1 {
         font-size: 1.4rem;
     }
-    
-    .cards-grid, .team-grid {
+    .cards-grid, .team-grid, .resources-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .container {
-        padding: 0.5rem 1rem 1rem;
     }
 }
