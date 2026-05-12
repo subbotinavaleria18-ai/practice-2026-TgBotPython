@@ -1,4 +1,4 @@
-/* Стили для сайта Стимлиф */
+/* Стили для сайта Стимлиф — компактная шапка */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     line-height: 1.5;
 }
 
-/* Шапка */
+/* ===== УМЕНЬШЕННАЯ ШАПКА ===== */
 header {
     background: #0f1422;
     border-bottom: 1px solid #2a2f45;
@@ -24,24 +24,24 @@ header {
 .header-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0.6rem 1.5rem;
+    padding: 0.4rem 1rem;  /* Уменьшено с 0.6rem на 0.4rem */
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.8rem;
+    gap: 0.5rem;
 }
 
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 1.2rem;
+    gap: 0.3rem;
+    font-size: 1rem;  /* Уменьшено с 1.2rem */
     font-weight: 700;
 }
 
 .logo-icon {
-    font-size: 1.4rem;
+    font-size: 1.2rem;  /* Уменьшено с 1.4rem */
 }
 
 .logo-text {
@@ -50,7 +50,7 @@ header {
 
 nav {
     display: flex;
-    gap: 0.3rem;
+    gap: 0.2rem;
     flex-wrap: wrap;
 }
 
@@ -58,9 +58,9 @@ nav {
     background: none;
     border: none;
     color: #cbd5ff;
-    font-size: 0.9rem;
+    font-size: 0.85rem;  /* Уменьшено с 0.9rem */
     font-weight: 500;
-    padding: 0.4rem 1rem;
+    padding: 0.3rem 0.8rem;  /* Уменьшено */
     border-radius: 40px;
     cursor: pointer;
     transition: 0.2s;
@@ -77,11 +77,11 @@ nav {
     background: rgba(255, 123, 74, 0.15);
 }
 
-/* Контейнер */
+/* Контейнер — уменьшен отступ сверху, чтобы контент не уезжал под шапку */
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 1.5rem;
+    padding: 0.8rem 1rem 1.5rem;  /* Уменьшен отступ сверху */
 }
 
 /* Страницы (вкладки) */
@@ -99,12 +99,13 @@ nav {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero-блок */
+/* Hero-блок — уменьшен отступ сверху */
 .hero {
     background: linear-gradient(145deg, #12172b, #0b0f1a);
     border-radius: 20px;
-    padding: 1.8rem;
-    margin-bottom: 1.8rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 0;  /* Убран лишний отступ сверху */
     text-align: center;
     border: 1px solid #2a2f45;
 }
@@ -211,7 +212,7 @@ footer {
     background: #0b101a;
     border-top: 1px solid #2a2f45;
     margin-top: 2rem;
-    padding: 1.3rem;
+    padding: 1rem;
     text-align: center;
     font-size: 0.75rem;
     color: #7f8aa8;
@@ -222,6 +223,12 @@ footer {
     .header-container {
         flex-direction: column;
         text-align: center;
+        padding: 0.3rem 1rem;
+    }
+    
+    .hero {
+        padding: 1.2rem;
+        margin-top: 0;
     }
     
     .hero h1 {
@@ -233,6 +240,6 @@ footer {
     }
     
     .container {
-        padding: 1rem;
+        padding: 0.5rem 1rem 1rem;
     }
 }
