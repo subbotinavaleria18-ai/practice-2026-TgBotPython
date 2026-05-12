@@ -2,11 +2,11 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>СТИМЛИФ — симулятор раздачи листовок</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -29,11 +29,11 @@
 
 <main>
     <div class="container">
-        <!-- ГЛАВНАЯ -->
+        <!-- ================= СТРАНИЦА 1: ГЛАВНАЯ ================= -->
         <div id="home" class="page active-page">
             <div class="hero">
                 <h1>Симулятор раздачи листовок</h1>
-                <p>МЕТРО — ВАШ ПУТЬ В БУДУЩЕЕ</p>
+                <p>«МЕТРО — ВАШ ПУТЬ В БУДУЩЕЕ»</p>
             </div>
             <div class="cards-grid">
                 <div class="card">
@@ -42,120 +42,132 @@
                 </div>
                 <div class="card">
                     <h2>📖 Основной сюжет</h2>
-                    <p>Молодой специалист пытается заработать. Каждый день — испытание: прохожие, начальник, поломанные автоматы. Сможете ли вы не сойти с ума?</p>
+                    <p>Молодой специалист пытается заработать. Каждый новый день — испытание: странные прохожие, требовательный начальник, поломанные автоматы. Сможете ли вы выполнить план и не потерять рассудок?</p>
                 </div>
                 <div class="card">
-                    <h2>⚙️ Механики</h2>
+                    <h2>⚙️ Ключевые механики</h2>
                     <ul class="features-list">
-                        <li>Система выносливости и статусы</li>
-                        <li>QTE-ивент «Турник»</li>
+                        <li>Система выносливости и статусы (Слабость / Скорость)</li>
+                        <li>QTE-ивент «Турник» (L_new = L_base + n)</li>
                         <li>Нелинейные диалоги с NPC</li>
                         <li>Экономика: деньги + энергия</li>
-                        <li>Mixed Media (2D в 3D)</li>
+                        <li>Визуальный стиль Mixed Media (2D персонажи в 3D мире)</li>
                     </ul>
                 </div>
             </div>
             <div class="scheme-placeholder">
-                <svg width="100%" height="100" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="400" height="80" fill="#0a0a0a" stroke="#2a4a2a" stroke-width="1"/>
-                    <text x="15" y="25" fill="#5a8a5a" font-size="11" font-family="monospace">[ СХЕМА ИГРОВОГО ЦИКЛА ]</text>
-                    <text x="15" y="45" fill="#6a6a6a" font-size="9">УТРО → РАЗДАЧА → QTE → ДИАЛОГ → ВЕЧЕР</text>
-                    <text x="15" y="65" fill="#4a4a4a" font-size="8">выносливость → статусы → репутация</text>
-                </svg>
-                <p>ваша схема из папки «Визуал» / «Ссылки на доски миро»</p>
+                <div class="scheme-title">[ СХЕМА ИГРОВОГО ЦИКЛА ]</div>
+                <div class="scheme-desc">УТРО → РАЗДАЧА ЛИСТОВОК → QTE-СОБЫТИЕ → ДИАЛОГ С NPC → ВЕЧЕР</div>
+                <div class="scheme-note">(выносливость → статусы → репутация → доход)</div>
+                <p class="scheme-hint">📍 Сюда можно добавить вашу схему из папки «Визуал» или «Ссылки на доски миро»</p>
             </div>
         </div>
 
-        <!-- О ПРОЕКТЕ -->
+        <!-- ================= СТРАНИЦА 2: О ПРОЕКТЕ ================= -->
         <div id="about" class="page">
             <div class="hero">
                 <h1>О проекте</h1>
-                <p>концепция, технологии, цели разработки</p>
+                <p>Концепция, цели и технологии разработки</p>
             </div>
-            <div class="card"><h2>🎯 Актуальность</h2><p>Рынок почти не имеет симуляторов работы промоутера с сатирой. Проект заполняет эту нишу.</p></div>
-            <div class="card"><h2>🛠️ Цель и задачи</h2><p>MVP к 25.05.2026: анализ механик, диалоговая система, программирование на Unity, 2D/3D контент, тестирование.</p></div>
-            <div class="card"><h2>💡 Новизна</h2><p>Уникальная механика раздачи листовок + нелинейные диалоги. Стек: Unity 2022 LTS, C#, GitHub, Mixed Media.</p></div>
-            <div class="demo-block"><p>🎬 <strong>Геймплей-видео:</strong> <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank">Открыть папку с материалами (Google Drive)</a></p></div>
+            <div class="cards-grid">
+                <div class="card">
+                    <h2>🎯 Актуальность</h2>
+                    <p>На рынке практически отсутствуют симуляторы, детально моделирующие работу промоутера с элементами сатиры. Проект заполняет эту нишу, предлагая уникальный опыт и рефлексию над вопросами молодёжной занятости.</p>
+                </div>
+                <div class="card">
+                    <h2>🛠️ Цель и задачи</h2>
+                    <p><strong>Цель:</strong> разработать MVP играбельного прототипа к 25 мая 2026 года.<br><strong>Задачи:</strong> анализ механик, создание диалоговой системы, программирование на Unity, разработка 2D/3D контента, тестирование.</p>
+                </div>
+                <div class="card">
+                    <h2>💡 Новизна и технологии</h2>
+                    <p><strong>Новизна:</strong> уникальная механика раздачи листовок + нелинейные диалоги.<br><strong>Стек:</strong> Unity 2022 LTS, C#, GitHub, Mixed Media (2D персонажи в 3D окружении).</p>
+                </div>
+            </div>
+            <div class="demo-block">
+                <p>🎬 <strong>Геймплей-видео:</strong> <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank" rel="noopener noreferrer">Открыть папку с материалами (Google Drive)</a></p>
+            </div>
         </div>
 
-        <!-- УЧАСТНИКИ с личным вкладом -->
+        <!-- ================= СТРАНИЦА 3: УЧАСТНИКИ ================= -->
         <div id="team" class="page">
-            <div class="hero"><h1>Команда проекта</h1><p>26 студентов. Роль и личный вклад в «Проектную деятельность».</p></div>
+            <div class="hero">
+                <h1>Команда проекта</h1>
+                <p>26 студентов Московского Политеха. Роль и личный вклад каждого в «Проектную деятельность»</p>
+            </div>
             <div class="team-grid">
-                <div class="team-card"><h3>💻 Программисты</h3><ul class="team-contribution-list">
-                    <li><span class="team-name">Николаенков Д.</span> <span class="team-role">(программист)</span> — система диалогов, менеджер квестов</li>
-                    <li><span class="team-name">Плетнева А.</span> <span class="team-role">(программист)</span> — выносливость, модификаторы</li>
-                    <li><span class="team-name">Попова Е.</span> <span class="team-role">(программист)</span> — ИИ NPC, патрулирование</li>
-                    <li><span class="team-name">Субботина В.</span> <span class="team-role">(программист)</span> — аналитика, сбор метрик</li></ul>
-                </div>
-                <div class="team-card"><h3>🎨 2D Художники</h3><ul class="team-contribution-list">
-                    <li><span class="team-name">Козырева Е.</span> — спрайты персонажей (Billboard)</li>
-                    <li><span class="team-name">Крутяков М.</span> — фоны для диалогов</li>
-                    <li><span class="team-name">Лагутенко А.</span> — иллюстрации заставок</li>
-                    <li><span class="team-name">Саяхова Е.</span> — иконки интерфейса</li>
-                    <li><span class="team-name">Троешестова А.</span> — VFX эффекты QTE</li>
-                    <li><span class="team-name">Чиркова В.</span> — концепт-арты</li></ul>
-                </div>
-                <div class="team-card"><h3>🖌️ 3D Художники</h3><ul class="team-contribution-list">
-                    <li><span class="team-name">Бирюков А.</span> — локации «Метро» и «Улица»</li>
-                    <li><span class="team-name">Гагарина Е.</span> — окружение, текстуры</li>
-                    <li><span class="team-name">Гарченко Д.</span> — анимация объектов</li>
-                    <li><span class="team-name">Кныш С.</span> — детали «Квартиры»</li>
-                    <li><span class="team-name">Смирнова Д.</span> — риггинг, анимации</li></ul>
-                </div>
-                <div class="team-card"><h3>✍️ Сценаристы</h3><ul class="team-contribution-list"><li><span class="team-name">Баранов П.</span> — основной сюжет, диалоговые ветки</li><li><span class="team-name">Попов Д.</span> — юмор, альтернативные концовки</li></ul></div>
-                <div class="team-card"><h3>🎮 Гейм-дизайнеры</h3><ul class="team-contribution-list"><li><span class="team-name">Плешков К.</span> — баланс QTE, экономика</li><li><span class="team-name">Самодуровский В.</span> — дизайн уровней</li></ul></div>
-                <div class="team-card"><h3>🎨 Графические дизайнеры</h3><ul class="team-contribution-list"><li><span class="team-name">Каримбаева А.</span> — UI/UX, радиальное меню</li><li><span class="team-name">Кинёв М.</span> — логотип, стиль игры</li></ul></div>
-                <div class="team-card"><h3>📢 Менеджеры по продвижению</h3><ul class="team-contribution-list"><li><span class="team-name">Бородина Е.</span> — SMM, тестеры</li><li><span class="team-name">Власова А.</span> — презентация на Дне открытых дверей</li><li><span class="team-name">Морев А.</span> — соцсети, новости</li></ul></div>
-                <div class="team-card"><h3>🔊 Звукорежиссёр</h3><ul class="team-contribution-list"><li><span class="team-name">Кономанина А.</span> — атмосферные звуки, музыка</li></ul></div>
-                <div class="team-card"><h3>📄 Технический писатель</h3><ul class="team-contribution-list"><li><span class="team-name">Лыхин А.</span> — пояснительная записка, документация по ГОСТ</li></ul></div>
+                <div class="team-card"><h3>💻 Программисты</h3><ul class="team-contribution-list"><li><span class="team-name">Николаенков Д.</span> – система диалогов, менеджер квестов</li><li><span class="team-name">Плетнева А.</span> – механика выносливости и модификаторов</li><li><span class="team-name">Попова Е.</span> – ИИ для NPC, патрулирование</li><li><span class="team-name">Субботина В.</span> – аналитика и сбор игровых метрик</li></ul></div>
+                <div class="team-card"><h3>🎨 2D Художники</h3><ul class="team-contribution-list"><li><span class="team-name">Козырева Е.</span> – спрайты персонажей для Billboard-системы</li><li><span class="team-name">Крутяков М.</span> – фоны для диалогов и QTE-сцен</li><li><span class="team-name">Лагутенко А.</span> – иллюстрации для стартового экрана</li><li><span class="team-name">Саяхова Е.</span> – иконки интерфейса (листовки, энергия)</li><li><span class="team-name">Троешестова А.</span> – VFX эффекты QTE (вспышки, пыль)</li><li><span class="team-name">Чиркова В.</span> – концепт-арты персонажей</li></ul></div>
+                <div class="team-card"><h3>🖌️ 3D Художники</h3><ul class="team-contribution-list"><li><span class="team-name">Бирюков А.</span> – локации «Метро» и «Улица»</li><li><span class="team-name">Гагарина Е.</span> – окружение, текстурирование</li><li><span class="team-name">Гарченко Д.</span> – анимация объектов</li><li><span class="team-name">Кныш С.</span> – детали интерьера «Квартира»</li><li><span class="team-name">Смирнова Д.</span> – риггинг и анимация 3D-объектов</li></ul></div>
+                <div class="team-card"><h3>✍️ Сценаристы</h3><ul class="team-contribution-list"><li><span class="team-name">Баранов П.</span> – основной сюжет и диалоговые ветки</li><li><span class="team-name">Попов Д.</span> – юмористические диалоги и альтернативные концовки</li></ul></div>
+                <div class="team-card"><h3>🎮 Гейм-дизайнеры</h3><ul class="team-contribution-list"><li><span class="team-name">Плешков К.</span> – баланс QTE-ивентов и экономики</li><li><span class="team-name">Самодуровский В.</span> – проектирование уровней</li></ul></div>
+                <div class="team-card"><h3>🎨 Графические дизайнеры</h3><ul class="team-contribution-list"><li><span class="team-name">Каримбаева А.</span> – UI/UX, радиальное меню диалогов</li><li><span class="team-name">Кинёв М.</span> – логотип и общий стиль игры</li></ul></div>
+                <div class="team-card"><h3>📢 Менеджеры по продвижению</h3><ul class="team-contribution-list"><li><span class="team-name">Бородина Е.</span> – SMM-стратегия, привлечение тестеров</li><li><span class="team-name">Власова А.</span> – организация презентации на Дне открытых дверей</li><li><span class="team-name">Морев А.</span> – ведение соцсетей и новостных постов</li></ul></div>
+                <div class="team-card"><h3>🔊 Звукорежиссёр</h3><ul class="team-contribution-list"><li><span class="team-name">Кономанина А.</span> – запись атмосферных звуков и музыкальной темы</li></ul></div>
+                <div class="team-card"><h3>📄 Технический писатель</h3><ul class="team-contribution-list"><li><span class="team-name">Лыхин А.</span> – оформление пояснительной записки и документации по ГОСТ</li></ul></div>
             </div>
         </div>
 
-        <!-- ЖУРНАЛ (4 новости) -->
+        <!-- ================= СТРАНИЦА 4: ЖУРНАЛ ================= -->
         <div id="journal" class="page">
-            <div class="hero"><h1>Журнал разработки</h1><p>прогресс и события проекта</p></div>
+            <div class="hero">
+                <h1>Журнал разработки</h1>
+                <p>Новости, прогресс и события проекта</p>
+            </div>
             <div class="news-list">
-                <div class="news-card"><div class="news-date">15.04.2026</div><div class="news-title">📄 Готова пояснительная записка</div><p>Подтверждена патентная чистота по ГОСТ 15.011-96.</p></div>
-                <div class="news-card"><div class="news-date">05.04.2026</div><div class="news-title">🎮 Первый играбельный прототип</div><p>MVP: локации, диалоги, выносливость. 85% положительных откликов.</p></div>
-                <div class="news-card"><div class="news-date">22.03.2026</div><div class="news-title">🎨 Утверждён визуальный стиль</div><p>Mixed Media: 2D персонажи + 3D окружение.</p></div>
-                <div class="news-card"><div class="news-date">10.03.2026</div><div class="news-title">🏛️ Презентация в Политехе</div><p>День открытых дверей — высокие оценки Центра проектной деятельности.</p></div>
+                <div class="news-card"><div class="news-date">15 апреля 2026</div><div class="news-title">📄 Готова пояснительная записка</div><p>Завершена документация. Подтверждена патентная чистота проекта согласно ГОСТ 15.011-96.</p></div>
+                <div class="news-card"><div class="news-date">5 апреля 2026</div><div class="news-title">🎮 Первый играбельный прототип</div><p>MVP включает три локации, систему диалогов и механику выносливости. Ранние тесты показали положительный отклик у 85% игроков.</p></div>
+                <div class="news-card"><div class="news-date">22 марта 2026</div><div class="news-title">🎨 Утверждён визуальный стиль Mixed Media</div><p>2D-спрайты прохожих (Billboard) + 3D-окружение создают уникальную атмосферу нуарного города.</p></div>
+                <div class="news-card"><div class="news-date">10 марта 2026</div><div class="news-title">🏛️ Презентация в Московском Политехе</div><p>Проект представлен на Дне открытых дверей. Получен положительный отклик от Центра проектной деятельности.</p></div>
             </div>
         </div>
 
-        <!-- РЕСУРСЫ -->
+        <!-- ================= СТРАНИЦА 5: РЕСУРСЫ ================= -->
         <div id="resources" class="page">
-            <div class="hero"><h1>Ресурсы</h1><p>полезные ссылки по проекту</p></div>
-            <div class="resource-list">
-                <div class="resource-link"><a href="https://github.com/subbotinavaleria18-ai/practice-2026-TgBotPython" target="_blank">📌 GitHub-репозиторий</a></div>
-                <div class="resource-link"><a href="https://partner.steamgames.com/" target="_blank">🎮 Steam Direct</a></div>
-                <div class="resource-link"><a href="https://docs.unity.com/" target="_blank">🛠️ Документация Unity</a></div>
-                <div class="resource-link"><a href="https://creativecommons.org/" target="_blank">📜 Creative Commons (лицензии)</a></div>
-                <div class="resource-link"><a href="https://www.fips.ru/" target="_blank">⚖️ ФИПС — патентная чистота</a></div>
-                <div class="resource-link"><a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank">🎬 Материалы игры (геймплей, схемы)</a></div>
+            <div class="hero">
+                <h1>Ресурсы</h1>
+                <p>Полезные ссылки по проекту</p>
+            </div>
+            <div class="resources-list">
+                <div class="resource-item"><a href="https://github.com/subbotinavaleria18-ai/practice-2026-TgBotPython" target="_blank" rel="noopener noreferrer">📌 GitHub-репозиторий проекта</a></div>
+                <div class="resource-item"><a href="https://partner.steamgames.com/" target="_blank" rel="noopener noreferrer">🎮 Steam Direct (платформа дистрибуции)</a></div>
+                <div class="resource-item"><a href="https://docs.unity.com/" target="_blank" rel="noopener noreferrer">🛠️ Официальная документация Unity</a></div>
+                <div class="resource-item"><a href="https://creativecommons.org/" target="_blank" rel="noopener noreferrer">📜 Лицензии Creative Commons (для ассетов)</a></div>
+                <div class="resource-item"><a href="https://www.fips.ru/" target="_blank" rel="noopener noreferrer">⚖️ ФИПС — патентная чистота</a></div>
+                <div class="resource-item"><a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank" rel="noopener noreferrer">🎬 Материалы игры (геймплей, схемы, квесты)</a></div>
+            </div>
+            <div class="demo-block">
+                <p>📖 <strong>Для углублённого изучения:</strong> «Социология видеоигр» (Салин А.С.), «Геймдизайн: как создать игру» (Смит Д.). Полный список литературы — в пояснительной записке.</p>
             </div>
         </div>
     </div>
 </main>
 
 <footer>
-    <p>Московский Политех | Проектная деятельность — «Стимлиф» | ВЫХОД</p>
+    <div class="container">
+        <p>Московский Политех | Проектная деятельность — Симулятор раздачи листовок «Стимлиф»</p>
+        <p class="footer-tags">#GameDev #Indie #SocialSimulator #MixedMedia</p>
+    </div>
 </footer>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const buttons = document.querySelectorAll('.nav-btn');
         const pages = document.querySelectorAll('.page');
+
         function switchPage(pageId) {
             pages.forEach(page => page.classList.remove('active-page'));
-            document.getElementById(pageId).classList.add('active-page');
+            const activePage = document.getElementById(pageId);
+            if (activePage) activePage.classList.add('active-page');
             buttons.forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`.nav-btn[data-page="${pageId}"]`).classList.add('active');
+            const activeButton = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+            if (activeButton) activeButton.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
         buttons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                switchPage(this.getAttribute('data-page'));
+            btn.addEventListener('click', function(e) {
+                const pageId = this.getAttribute('data-page');
+                if (pageId) switchPage(pageId);
             });
         });
     });
