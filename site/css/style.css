@@ -1,16 +1,4 @@
-/* Общие стили и переменные */
-:root {
-    --bg-dark: #0a0f1a;
-    --bg-card: #111622;
-    --bg-header: #0f1422;
-    --border-color: #2a2f45;
-    --accent: #ff7b4a;
-    --accent-hover: #ff9668;
-    --text-primary: #eef2ff;
-    --text-secondary: #cbd5ff;
-    --text-muted: #7f8aa8;
-}
-
+/* Стили для сайта Стимлиф */
 * {
     margin: 0;
     padding: 0;
@@ -18,36 +6,30 @@
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0a0f1a;
+    color: #eef2ff;
     line-height: 1.5;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-/* ===== УМЕНЬШЕННАЯ И УЛУЧШЕННАЯ ШАПКА ===== */
+/* Шапка */
 header {
-    background-color: var(--bg-header);
-    border-bottom: 1px solid var(--border-color);
+    background: #0f1422;
+    border-bottom: 1px solid #2a2f45;
     position: sticky;
     top: 0;
     z-index: 100;
-    /* Убираем лишний фон и размытие для простоты */
 }
 
 .header-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0.6rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Уменьшаем вертикальные отступы */
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
 }
 
 .logo {
@@ -56,8 +38,6 @@ header {
     gap: 0.4rem;
     font-size: 1.2rem;
     font-weight: 700;
-    /* Убираем лишний отступ */
-    line-height: 1;
 }
 
 .logo-icon {
@@ -65,154 +45,142 @@ header {
 }
 
 .logo-text {
-    background: linear-gradient(135deg, var(--accent), #ffb47a);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #ff7b4a;
 }
 
 nav {
     display: flex;
     gap: 0.3rem;
     flex-wrap: wrap;
-    justify-content: flex-end;
 }
 
 .nav-btn {
     background: none;
     border: none;
-    color: var(--text-secondary);
+    color: #cbd5ff;
     font-size: 0.9rem;
     font-weight: 500;
-    /* Уменьшаем внутренние отступы кнопок */
-    padding: 0.4rem 0.9rem;
+    padding: 0.4rem 1rem;
     border-radius: 40px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: 0.2s;
     font-family: inherit;
 }
 
 .nav-btn:hover {
-    color: var(--accent);
-    background-color: rgba(255, 123, 74, 0.1);
+    color: #ff7b4a;
+    background: rgba(255, 123, 74, 0.1);
 }
 
 .nav-btn.active {
-    color: var(--accent);
-    background-color: rgba(255, 123, 74, 0.15);
-    font-weight: 600;
+    color: #ff7b4a;
+    background: rgba(255, 123, 74, 0.15);
 }
 
-/* Остальные стили остаются почти без изменений, 
-   но я слегка уменьшаю отступы для контента, чтобы он начинался выше */
+/* Контейнер */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
 
-/* Страницы (работают как вкладки) */
+/* Страницы (вкладки) */
 .page {
     display: none;
-    animation: fadeIn 0.25s ease;
+    animation: fade 0.2s ease;
 }
 
 .page.active-page {
     display: block;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes fade {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Hero-блок - делаем чуть компактнее */
+/* Hero-блок */
 .hero {
     background: linear-gradient(145deg, #12172b, #0b0f1a);
-    border-radius: 24px;
+    border-radius: 20px;
     padding: 1.8rem;
-    margin: 1.5rem 0;
+    margin-bottom: 1.8rem;
     text-align: center;
-    border: 1px solid var(--border-color);
+    border: 1px solid #2a2f45;
 }
 
 .hero h1 {
     font-size: 1.8rem;
-    color: var(--accent);
+    color: #ff7b4a;
     margin-bottom: 0.5rem;
 }
 
 .hero p {
     font-size: 1rem;
-    color: var(--text-secondary);
-    max-width: 700px;
-    margin: 0 auto;
+    color: #cbd5ff;
 }
 
-/* Сетка карточек и отступы */
+/* Карточки */
 .cards-grid, .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.3rem;
     margin: 1.5rem 0;
 }
 
 .card, .team-card, .news-card {
-    background-color: var(--bg-card);
-    border-radius: 20px;
+    background: #111622;
+    border-radius: 18px;
     padding: 1.3rem;
-    border: 1px solid var(--border-color);
-    transition: transform 0.2s, border-color 0.2s;
+    border: 1px solid #2a2f45;
+    transition: 0.2s;
 }
 
 .card:hover, .team-card:hover, .news-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent);
+    transform: translateY(-3px);
+    border-color: #ff7b4a;
 }
 
 .card h2, .team-card h3, .news-card h2 {
-    color: var(--accent);
-    margin-bottom: 0.75rem;
+    color: #ff7b4a;
+    margin-bottom: 0.7rem;
     font-size: 1.2rem;
 }
 
-.card p, .team-card p, .news-card p {
-    color: var(--text-secondary);
-    line-height: 1.5;
+.card p, .team-card p {
+    color: #cbd5ff;
     font-size: 0.95rem;
 }
 
 .features-list {
     margin-left: 1.2rem;
-    color: var(--text-secondary);
+    color: #cbd5ff;
 }
 
 .features-list li {
     margin: 0.4rem 0;
 }
 
-/* Демо-блок для видео/ссылок */
+/* Блок со ссылкой */
 .demo-block {
-    background: linear-gradient(135deg, #111622, #0a0e18);
-    border-radius: 20px;
+    background: #0e1320;
+    border-radius: 18px;
     padding: 1.2rem;
     text-align: center;
     margin: 1.5rem 0;
-    border: 1px solid var(--border-color);
+    border: 1px solid #2a2f45;
 }
 
 .demo-block a {
-    color: var(--accent);
+    color: #ff7b4a;
     text-decoration: none;
-    font-weight: 500;
 }
 
 .demo-block a:hover {
     text-decoration: underline;
 }
 
-/* Стили для страницы новостей */
+/* Новости */
 .news-list {
     display: flex;
     flex-direction: column;
@@ -228,55 +196,32 @@ nav {
     display: inline-block;
     font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--accent);
-    margin-bottom: 0.4rem;
+    color: #ff7b4a;
+    margin-bottom: 0.3rem;
     font-weight: 600;
 }
 
 .news-title {
     font-size: 1.1rem;
     margin-bottom: 0.4rem;
-    color: var(--text-primary);
 }
 
 /* Подвал */
 footer {
-    background-color: #0b101a;
-    border-top: 1px solid var(--border-color);
+    background: #0b101a;
+    border-top: 1px solid #2a2f45;
     margin-top: 2rem;
-    padding: 1.5rem 0;
+    padding: 1.3rem;
     text-align: center;
-    color: var(--text-muted);
     font-size: 0.75rem;
+    color: #7f8aa8;
 }
 
-.footer-tags {
-    margin-top: 0.3rem;
-    font-size: 0.7rem;
-}
-
-/* ===== УЛУЧШЕННАЯ АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ ===== */
-@media (max-width: 768px) {
-    /* Шапка всё ещё в одну строку, но кнопки могут переноситься */
+/* Телефоны */
+@media (max-width: 700px) {
     .header-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .logo {
-        /* Можно сделать логотип чуть меньше на телефонах */
-        font-size: 1rem;
-    }
-    
-    .logo-icon {
-        font-size: 1.2rem;
-    }
-    
-    .nav-btn {
-        padding: 0.3rem 0.7rem;
-        font-size: 0.8rem;
+        flex-direction: column;
+        text-align: center;
     }
     
     .hero h1 {
@@ -285,19 +230,9 @@ footer {
     
     .cards-grid, .team-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
     }
     
     .container {
-        padding: 0 1rem;
-    }
-    
-    .card, .team-card {
         padding: 1rem;
-    }
-    
-    .hero {
-        padding: 1.3rem;
-        margin: 1rem 0;
     }
 }
