@@ -85,6 +85,8 @@ Dispatcher направляет запрос в нужный хендлер
 
 https://images/4-sequence-diagram.png
 
+---
+
 ## 3. Пошаговое руководство для начинающих
 
 ### Шаг 1: Установка Python
@@ -157,6 +159,9 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
+
+---
+
 ### Шаг 6: Запуск бота
 ```python
 src/main.py
@@ -205,8 +210,9 @@ async def get_file_id(message: types.Message):
         await message.answer(f"File ID: `{file_id}`", parse_mode="Markdown")
 ```
 
-markdown
-## 5. Модификация проекта (творческий пункт)
+---
+
+## 5. Модификация проекта
 
 ### 5.1 Выбранная модификация
 
