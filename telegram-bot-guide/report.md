@@ -210,8 +210,8 @@ if __name__ == "__main__":
 
 https://images/6-bot-working.png
 
-3.7 Минимальный рабочий код бота
-python
+### 3.7 Минимальный рабочий код бота
+```python
 import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
@@ -231,20 +231,23 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-3.8 Запуск и проверка
+```
+
+### 3.8 Запуск и проверка
 Запустите бота:
 
-bash
+```bash
 python src/main.py
+```
 В консоли появится «Бот запущен...». Откройте Telegram, найдите бота и отправьте /start.
 
-4. Создание бота "Steamleaf"
-На основе базового шаблона был разработан бот "Steamleaf" — симулятор раздатчика листовок.
+## 4. Создание бота "Steamleaf"
+На основе базового шаблона был разработан бот «Steamleaf» для проекта «Steamleaf — симулятор раздатчика листовок».
 
-4.1 Команда /start
+### 4.1 Команда /start
 Приветственное сообщение с описанием игры:
 
-python
+```python
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     text = (
@@ -253,10 +256,12 @@ async def cmd_start(message: types.Message):
         "Раздавайте флаеры, находите подход к прохожим, выживайте в опасных районах и раскрывайте городские тайны."
     )
     await message.answer(text)
-4.2 Команда /feedback
+```
+
+### 4.2 Команда /feedback
 Обратная связь с контактами разработчиков:
 
-python
+```python
 @dp.message(Command("feedback"))
 async def cmd_feedback(message: types.Message):
     text = (
@@ -266,10 +271,12 @@ async def cmd_feedback(message: types.Message):
         "👨‍💻 Слава — техтимлид: @Senko_Bruh"
     )
     await message.answer(text, parse_mode="HTML")
-4.3 Команда /tutorial
+```
+
+### 4.3 Команда /tutorial
 Обучение и пролог игры:
 
-python
+```python
 @dp.message(Command("tutorial"))
 async def cmd_tutorial(message: types.Message):
     text = (
@@ -281,10 +288,12 @@ async def cmd_tutorial(message: types.Message):
         "- 📋 Выполняйте квесты"
     )
     await message.answer(text, parse_mode="HTML")
-4.4 Команда /news
+```
+
+### 4.4 Команда /news
 Новости проекта:
 
-python
+```python
 @dp.message(Command("news"))
 async def cmd_news(message: types.Message):
     text = (
@@ -293,10 +302,11 @@ async def cmd_news(message: types.Message):
         "🔹 Закрытое альфа-тестирование — стартует в сентябре"
     )
     await message.answer(text, parse_mode="HTML")
-4.5 Команда /gallery
+```
+### 4.5 Команда /gallery
 Галерея персонажей с фотографиями:
 
-python
+```python
 @dp.message(Command("gallery"))
 async def cmd_gallery(message: types.Message):
     media = [
@@ -314,12 +324,13 @@ async def cmd_gallery(message: types.Message):
         ),
     ]
     await message.answer_media_group(media)
+```
 [ИЛЛЮСТРАЦИЯ №7] Сделайте скриншот работы команды /gallery. Сохраните как images/7-gallery-example.png
 
 https://images/7-gallery-example.png
 
-4.6 Полный код бота "Steamleaf"
-python
+### 4.6 Полный код бота "Steamleaf"
+```python
 import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
@@ -366,14 +377,16 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
-5. Модификация проекта
-5.1 Выбранная модификация
+```
+
+## 5. Модификация проекта
+### 5.1 Выбранная модификация
 Добавление визуального сопровождения ко всем действиям бота и улучшение галереи персонажей.
 
-5.2 Обоснование выбора
+### 5.2 Обоснование выбора
 В базовой версии бот отвечал только текстом. Это делало взаимодействие с ботом менее наглядным и интересным. Пользователи получали много текста без визуального сопровождения, что снижало вовлечённость.
 
-5.3 Что было (до модификации)
+### 5.3 Что было (до модификации)
 Команда /start — только текст
 
 Команда /tutorial — только текст
@@ -384,14 +397,14 @@ if __name__ == "__main__":
 
 Команда /gallery — 3 фото с подписями, без отдельного описания
 
-5.4 Что стало (после модификации)
+### 5.4 Что стало (после модификации)
 Визуальное сопровождение всех команд: текст + изображение
 
 Улучшенная галерея: текстовое описание персонажей + фото + расширенные подписи
 
-5.5 Реализация модификации
-5.5.1 Улучшенная команда /start
-python
+### 5.5 Реализация модификации
+#### 5.5.1 Улучшенная команда /start
+```python
 from aiogram.types import InputFile
 
 @dp.message(Command("start"))
@@ -399,8 +412,10 @@ async def cmd_start(message: types.Message):
     text = "Добро пожаловать в «Steamleaf»!"
     photo = InputFile("images/start_preview.png")
     await message.answer_photo(photo=photo, caption=text)
-5.5.2 Улучшенная команда /gallery
-python
+```
+
+#### 5.5.2 Улучшенная команда /gallery
+```python
 @dp.message(Command("gallery"))
 async def cmd_gallery(message: types.Message):
     # Описание персонажей
@@ -419,14 +434,16 @@ async def cmd_gallery(message: types.Message):
         InputMediaPhoto(media="FILE_ID_VINT", caption="🔧 Винт"),
     ]
     await message.answer_media_group(media)
-5.6 Результаты модификации
+```
+
+#### 5.6 Результаты модификации
 Бот стал визуально привлекательнее
 
 Пользователи лучше запоминают персонажей
 
 Все команды имеют визуальное сопровождение
 
-6. Заключение
+## 6. Заключение
 В данном руководстве была рассмотрена технология создания Telegram-бота на библиотеке aiogram для Python.
 
 Были освещены следующие темы:
