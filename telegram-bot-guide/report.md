@@ -1,4 +1,4 @@
-# Техническое руководство по созданию Telegram-бота "Steamleaf"
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/77ae4c62-ae12-4740-aa33-71d599198893" /># Техническое руководство по созданию Telegram-бота "Steamleaf"
 
 ## Оглавление
 1. [Исследование предметной области](#1-исследование-предметной-области)
@@ -293,7 +293,7 @@ async def cmd_gallery(message: types.Message):
     await message.answer_media_group(media)
 ```
 5.5.3 Пример для команды /tutorial
-python
+```python
 @dp.message(Command("tutorial"))
 async def cmd_tutorial(message: types.Message):
     text = (
@@ -314,25 +314,11 @@ async def cmd_feedback(message: types.Message):
     )
     photo = InputFile("images/feedback.png")  # или file_id
     await message.answer_photo(photo=photo, caption=text, parse_mode="Markdown")
-5.6 Результаты модификации
-✅ Бот стал визуально привлекательнее
+```
+###5.6 Результаты модификации
+Бот стал визуально привлекательнее
+Пользователи лучше запоминают персонажей (текст + фото)
+Информация о персонажах не теряется при быстром просмотре
+Все команды теперь имеют визуальное сопровождение
+Повышение вовлечённости пользователей
 
-✅ Пользователи лучше запоминают персонажей (текст + фото)
-
-✅ Информация о персонажах не теряется при быстром просмотре
-
-✅ Все команды теперь имеют визуальное сопровождение
-
-✅ Повышение вовлечённости пользователей
-
-5.7 Создание изображений для бота
-Для реализации модификации необходимо создать следующие изображения:
-
-Изображение	Описание	Куда сохранить
-start_preview.png	Приветственная картинка для команды /start	src/images/
-tutorial_preview.png	Иллюстрация к обучению /tutorial	src/images/
-news_preview.png	Изображение к новостям /news	src/images/
-feedback.png	Изображение с контактами для /feedback	src/images/
-moxi.png	Портрет персонажа Мокси	src/images/
-rusty.png	Портрет персонажа Ржавый	src/images/
-vint.png	Портрет персонажа Винт	src/images/
