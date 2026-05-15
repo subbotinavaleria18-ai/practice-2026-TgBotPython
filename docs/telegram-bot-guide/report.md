@@ -73,7 +73,7 @@ steamleaf-bot/
 │   └── images/              # Папка с иллюстрациями
 └── README.md'
 ```
-### 2.2 Структура файлов проекта
+### Жизненный цикл обработки команды
 Пользователь отправляет /start в Telegram
 
 Telegram API передаёт запрос боту
@@ -87,5 +87,5 @@ Dispatcher направляет запрос в нужный хендлер
 [ИЛЛЮСТРАЦИЯ №4] Нарисуйте диаграмму последовательности со стрелками по времени. Сохраните как images/4-sequence-diagram.png
 
 https://images/4-sequence-diagram.png
-https://images/4-sequence-diagram.png
+
 
