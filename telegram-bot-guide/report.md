@@ -125,3 +125,45 @@ venv\Scripts\activate
 # Mac/Linux:
 source venv/bin/activate
 ```
+### Шаг 4: Установка зависимостей
+Установите aiogram:
+
+```bash
+pip install aiogram
+```
+
+### Шаг 5: Написание кода
+
+Создайте файл src/main.py:
+
+```bash
+python
+import asyncio
+from aiogram import Bot, Dispatcher, types
+from aiogram.filters import Command
+
+BOT_TOKEN = "ВАШ_ТОКЕН_СЮДА"
+
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
+
+@dp.message(Command("start"))
+async def start(message: types.Message):
+    await message.answer("Привет! Я бот Steamleaf!")
+
+async def main():
+    print("Бот запущен...")
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+### Шаг 6: Запуск бота
+```bash
+python src/main.py
+```
+Вы увидите «Бот запущен....» Откройте Telegram и напишите /start вашему боту.
+
+[ИЛЛЮСТРАЦИЯ №6] Сделайте скриншот чата с ботом: команда /start и ответ бота. Сохраните как images/6-bot-working.png
+
+https://images/6-bot-working.png
