@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/77ae4c62-ae12-4740-aa33-71d599198893" /># Техническое руководство по созданию Telegram-бота "Steamleaf"
+# Техническое руководство по созданию Telegram-бота "Steamleaf"
 
 ## Оглавление
 1. [Исследование предметной области](#1-исследование-предметной-области)
