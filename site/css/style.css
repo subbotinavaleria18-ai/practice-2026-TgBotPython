@@ -1,4 +1,4 @@
-/* STEAMLEAF — СТИЛЬ ТОЧНО КАК НА РЕФЕРЕНСЕ */
+/* STEAMLEAF — СТИЛЬ ПОД РЕФЕРЕНС */
 * {
     margin: 0;
     padding: 0;
@@ -10,8 +10,8 @@ html {
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
-    background: #0a0a0a;
+    font-family: 'Inter', 'Roboto Condensed', 'Segoe UI', sans-serif;
+    background: #0d0d0d;
     color: #e0e0e0;
     line-height: 1.5;
     min-height: 100%;
@@ -21,8 +21,8 @@ body {
 
 /* ШАПКА */
 header {
-    background: #0f0f0f;
-    border-bottom: 1px solid #222;
+    background: #0a0a0a;
+    border-bottom: 1px solid #2a2a2a;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -30,7 +30,7 @@ header {
 }
 
 .header-container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0.8rem 1.5rem;
     display: flex;
@@ -48,23 +48,24 @@ header {
 }
 
 .logo-icon {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 .logo-text {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 700;
     color: #c48a5a;
+    letter-spacing: 1px;
 }
 
 .logo-sub {
-    font-size: 0.65rem;
-    color: #777;
+    font-size: 0.7rem;
+    color: #7a7a7a;
 }
 
 nav {
     display: flex;
-    gap: 0.2rem;
+    gap: 0.3rem;
     flex-wrap: wrap;
 }
 
@@ -72,9 +73,9 @@ nav {
     background: none;
     border: none;
     color: #aaa;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    padding: 0.4rem 0.9rem;
+    padding: 0.4rem 1rem;
     cursor: pointer;
     transition: 0.2s;
     font-family: inherit;
@@ -95,7 +96,7 @@ main {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 1.5rem;
 }
@@ -115,39 +116,39 @@ main {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* HERO (как на референсе) */
+/* HERO */
 .hero {
     text-align: center;
-    padding: 1.5rem 1rem;
-    border-bottom: 1px solid #222;
-    margin-bottom: 1.5rem;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 2rem;
 }
 
 .hero h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #c48a5a;
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
 .hero p {
-    font-size: 0.85rem;
-    color: #999;
-    max-width: 650px;
+    font-size: 0.9rem;
+    color: #9a9a9a;
+    max-width: 700px;
     margin: 0 auto;
 }
 
 /* БЛОКИ КАК НА РЕФЕРЕНСЕ */
 .feature-block {
     display: flex;
-    gap: 1.2rem;
-    padding: 1.2rem 0;
-    border-bottom: 1px solid #222;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #2a2a2a;
 }
 
 .feature-icon {
-    font-size: 1.8rem;
-    min-width: 45px;
+    font-size: 2rem;
+    min-width: 50px;
 }
 
 .feature-content {
@@ -156,80 +157,78 @@ main {
 
 .feature-content h2 {
     color: #c48a5a;
-    font-size: 1.2rem;
-    margin-bottom: 0.4rem;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
     font-weight: 500;
 }
 
 .feature-content p {
-    color: #aaa;
-    font-size: 0.85rem;
-    margin-bottom: 0.4rem;
-    line-height: 1.4;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
 .features-list {
     margin-left: 1.2rem;
-    color: #aaa;
-    font-size: 0.8rem;
-    margin-bottom: 0.4rem;
+    color: #b0b0b0;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
 }
 
 .features-list li {
-    margin: 0.15rem 0;
+    margin: 0.2rem 0;
 }
 
 .detail-link {
     color: #c48a5a;
     text-decoration: none;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
 }
 
 .detail-link:hover {
     text-decoration: underline;
 }
 
-/* ЦИТАТА (как на референсе) */
+/* ЦИТАТА */
 .quote-block {
     text-align: center;
-    padding: 1.5rem;
+    padding: 2rem;
     margin: 1rem 0;
+    background: #111;
+    border-left: 3px solid #c48a5a;
 }
 
 .quote-block p {
-    font-size: 1rem;
-    color: #c48a5a;
+    font-size: 1.1rem;
+    color: #d0d0d0;
     font-style: italic;
-    line-height: 1.4;
 }
 
-/* КАРТОЧКИ ДЛЯ ДРУГИХ СТРАНИЦ */
+/* КАРТОЧКИ (для других страниц) */
 .card, .team-card, .news-card, .resource-item, .bot-card {
     background: #111;
-    border: 1px solid #222;
-    padding: 1rem;
+    border: 1px solid #2a2a2a;
+    padding: 1.2rem;
     margin-bottom: 1rem;
-    border-radius: 0;
 }
 
 .card h2, .team-card h3, .bot-card h3 {
     color: #c48a5a;
-    margin-bottom: 0.4rem;
-    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
 .card p, .team-card p, .bot-card p {
     color: #aaa;
-    font-size: 0.8rem;
-    line-height: 1.4;
+    font-size: 0.85rem;
 }
 
 /* УЧАСТНИКИ */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
 }
 
@@ -239,47 +238,46 @@ main {
 }
 
 .team-contribution-list li {
-    font-size: 0.7rem;
-    color: #888;
+    font-size: 0.75rem;
+    color: #999;
     margin-bottom: 0.2rem;
 }
 
 .team-name {
     font-weight: 600;
-    color: #bbb;
+    color: #ccc;
 }
 
 /* НОВОСТИ */
 .news-list {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 
 .news-date {
     color: #c48a5a;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     margin-bottom: 0.2rem;
 }
 
 .news-title {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
 }
 
 /* РЕСУРСЫ */
 .resources-list {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
     margin: 1rem 0;
 }
 
 .resource-item a {
     color: #c48a5a;
     text-decoration: none;
-    font-size: 0.8rem;
 }
 
 .resource-item a:hover {
@@ -290,26 +288,26 @@ main {
     display: inline-block;
     background: #c48a5a;
     color: #0a0a0a;
-    padding: 0.4rem 0.9rem;
+    padding: 0.5rem 1rem;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.8rem;
     margin-top: 0.5rem;
+    border-radius: 4px;
 }
 
 .bot-button:hover {
     background: #d49a6a;
 }
 
-/* ВИДЕО */
+/* ВИДЕО И МЕДИА */
 .media-section {
-    margin: 1.5rem 0;
+    margin: 2rem 0;
 }
 
 .media-title {
     color: #c48a5a;
-    margin-bottom: 0.8rem;
-    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
 }
 
 .video-wrapper {
@@ -328,40 +326,33 @@ main {
 }
 
 .media-caption {
-    font-size: 0.65rem;
-    color: #666;
+    font-size: 0.7rem;
+    color: #777;
     text-align: center;
-    margin-top: 0.4rem;
+    margin-top: 0.5rem;
 }
 
 .scheme-placeholder {
     background: #0a0a0a;
-    border: 1px solid #222;
-    padding: 0.8rem;
+    border: 1px solid #2a2a2a;
+    padding: 1rem;
     text-align: center;
-}
-
-.demo-block {
-    background: #111;
-    padding: 0.8rem;
-    text-align: center;
-    margin-top: 1rem;
 }
 
 /* ПОДВАЛ */
 footer {
     background: #050505;
-    border-top: 1px solid #222;
-    padding: 0.8rem;
+    border-top: 1px solid #2a2a2a;
+    padding: 1rem;
     text-align: center;
-    font-size: 0.6rem;
-    color: #666;
+    font-size: 0.7rem;
+    color: #6a6a6a;
     margin-top: auto;
 }
 
 .footer-tags {
-    margin-top: 0.2rem;
-    font-size: 0.55rem;
+    margin-top: 0.3rem;
+    font-size: 0.6rem;
 }
 
 /* АДАПТАЦИЯ */
@@ -375,7 +366,7 @@ footer {
         gap: 0.5rem;
     }
     .hero h1 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
     .container {
         padding: 1rem;
