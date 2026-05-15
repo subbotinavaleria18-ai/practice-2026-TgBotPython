@@ -1,20 +1,288 @@
-/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ССЫЛОК, ВИДЕО И БОТА */
-
-.card-link {
-    display: inline-block;
-    margin-top: 0.8rem;
-    color: #c48a5a;
-    text-decoration: none;
-    font-size: 0.7rem;
-    font-family: monospace;
-    letter-spacing: 1px;
+/* STEAMLEAF — ПОЛНЫЙ СТИЛЬ (основной + дополнительные) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.card-link:hover {
-    color: #e0b080;
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    line-height: 1.5;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========== ШАПКА ========== */
+header {
+    background: #0f1422;
+    border-bottom: 1px solid #2a2f42;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-shrink: 0;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.logo-icon {
+    font-size: 1.2rem;
+}
+
+.logo-text {
+    color: #c48a5a;
+}
+
+.logo-sub {
+    font-size: 0.65rem;
+    color: #7f8aa8;
+}
+
+nav {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: #cbd5ff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-family: inherit;
+}
+
+.nav-btn:hover {
+    color: #ff7b4a;
+    background: rgba(255, 123, 74, 0.1);
+}
+
+.nav-btn.active {
+    color: #ff7b4a;
+    background: rgba(255, 123, 74, 0.15);
+}
+
+/* ========== ОСНОВНОЙ КОНТЕНТ ========== */
+main {
+    flex: 1 0 auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ========== СТРАНИЦЫ ========== */
+.page {
+    display: none;
+    animation: fade 0.2s ease;
+}
+
+.page.active-page {
+    display: block;
+}
+
+@keyframes fade {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== HERO БЛОК ========== */
+.hero {
+    text-align: center;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    color: #c48a5a;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.hero p {
+    font-size: 0.9rem;
+    color: #9a9a9a;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ========== БЛОКИ НА ГЛАВНОЙ ========== */
+.feature-block {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid #2a2f42;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    min-width: 50px;
+}
+
+.feature-content {
+    flex: 1;
+}
+
+.feature-content h2 {
+    color: #c48a5a;
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}
+
+.feature-content p {
+    color: #aaa;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+.features-list {
+    margin-left: 1.2rem;
+    color: #aaa;
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+}
+
+.features-list li {
+    margin: 0.15rem 0;
+}
+
+.detail-link {
+    color: #c48a5a;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.detail-link:hover {
     text-decoration: underline;
 }
 
+/* ========== ЦИТАТА ========== */
+.quote-block {
+    text-align: center;
+    padding: 1.5rem;
+    margin: 1rem 0;
+}
+
+.quote-block p {
+    font-size: 1rem;
+    color: #c48a5a;
+    font-style: italic;
+}
+
+/* ========== КАРТОЧКИ (общие) ========== */
+.card, .team-card, .news-card, .resource-item {
+    background: #111622;
+    border: 1px solid #2a2f42;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.card h2, .team-card h3 {
+    color: #c48a5a;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+.card p, .team-card p {
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+/* ========== УЧАСТНИКИ ========== */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+}
+
+.team-contribution-list {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.team-contribution-list li {
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 0.2rem;
+}
+
+.team-name {
+    font-weight: 600;
+    color: #bbb;
+}
+
+/* ========== НОВОСТИ ========== */
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.news-date {
+    color: #c48a5a;
+    font-size: 0.7rem;
+    margin-bottom: 0.2rem;
+}
+
+.news-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+/* ========== РЕСУРСЫ ========== */
+.resources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.resource-item a {
+    color: #c48a5a;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.resource-item a:hover {
+    text-decoration: underline;
+}
+
+/* ========== МЕДИА (ВИДЕО, СХЕМЫ) ========== */
 .media-section {
     margin: 2rem 0;
 }
@@ -58,6 +326,7 @@
     text-align: center;
 }
 
+/* ========== БЛОК ТЕЛЕГРАМ-БОТА ========== */
 .bot-card {
     background: #0f0f0f;
     border: 1px solid #2a2a2a;
@@ -91,6 +360,7 @@
     font-family: monospace;
     font-size: 0.8rem;
     transition: 0.2s;
+    border-radius: 20px;
 }
 
 .bot-button:hover {
@@ -101,4 +371,41 @@
 
 .bot-screenshot {
     margin-top: 1rem;
+}
+
+/* ========== ПОДВАЛ ========== */
+footer {
+    background: #0b101a;
+    border-top: 1px solid #2a2f42;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #7f8aa8;
+    margin-top: auto;
+}
+
+.footer-tags {
+    margin-top: 0.2rem;
+    font-size: 0.6rem;
+}
+
+/* ========== АДАПТАЦИЯ ПОД ТЕЛЕФОН ========== */
+@media (max-width: 700px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .feature-block {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    .container {
+        padding: 1rem;
+    }
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
 }
