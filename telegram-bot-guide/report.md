@@ -261,8 +261,9 @@ async def cmd_start(message: types.Message):
     # Отправка изображения с текстом
     photo = InputFile("images/start_preview.png")  # или file_id
     await message.answer_photo(photo=photo, caption=text)
-5.5.2 Улучшенная команда /gallery (с описанием персонажей)
-python
+```
+### 5.5.2 Улучшенная команда /gallery (с описанием персонажей)
+```python
 from aiogram.types import InputMediaPhoto
 
 @dp.message(Command("gallery"))
@@ -298,7 +299,8 @@ async def cmd_gallery(message: types.Message):
     ]
     await message.answer_media_group(media)
 ```
-5.5.3 Пример для команды /tutorial
+
+##5.5.3 Пример для команды /tutorial
 ```python
 @dp.message(Command("tutorial"))
 async def cmd_tutorial(message: types.Message):
@@ -321,7 +323,8 @@ async def cmd_feedback(message: types.Message):
     photo = InputFile("images/feedback.png")  # или file_id
     await message.answer_photo(photo=photo, caption=text, parse_mode="Markdown")
 ```
-###5.6 Результаты модификации
+
+### 5.6 Результаты модификации
 Бот стал визуально привлекательнее
 Пользователи лучше запоминают персонажей (текст + фото)
 Информация о персонажах не теряется при быстром просмотре
