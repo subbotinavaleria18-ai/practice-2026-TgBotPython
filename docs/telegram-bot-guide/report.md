@@ -88,4 +88,29 @@ Dispatcher направляет запрос в нужный хендлер
 
 https://images/4-sequence-diagram.png
 
+## 3. Пошаговое руководство для начинающих
+
+### Шаг 1: Установка Python
+
+Скачайте Python 3.13+ с [официального сайта](https://python.org). При установке обязательно отметьте "Add Python to PATH".
+
+### Шаг 2: Создание бота в Telegram
+
+1. Найдите в Telegram **@BotFather**
+2. Отправьте команду `/newbot`
+3. Придумайте имя бота (например, `SteamleafBot`)
+4. Получите **токен** — секретную строку вида `123456:ABC-DEF`
+
+`[ИЛЛЮСТРАЦИЯ №5]` Сделайте скриншот диалога с BotFather (команда /newbot и полученный токен). Сохраните как `images/5-botfather-screenshot.png`
+
+![Рисунок 5 — Получение токена бота у BotFather](images/5-botfather-screenshot.png)
+
+### Шаг 3: Настройка окружения
+
+Создайте папку проекта и откройте её в терминале:
+
+```bash
+mkdir steamleaf-bot
+cd steamleaf-bot
+```
 
