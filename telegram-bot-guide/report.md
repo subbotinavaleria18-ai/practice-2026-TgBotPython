@@ -167,3 +167,44 @@ python src/main.py
 [ИЛЛЮСТРАЦИЯ №6] Сделайте скриншот чата с ботом: команда /start и ответ бота. Сохраните как images/6-bot-working.png
 
 https://images/6-bot-working.png
+
+##4. Примеры кода
+### 4.1 Команда с HTML-форматированием (обратная связь)
+```bash
+python
+@dp.message(Command("feedback"))
+async def cmd_feedback(message: types.Message):
+    text = (
+        "📬 <b>Обратная связь</b>\n"
+        "Если у вас есть вопросы, пишите нам.\n\n"
+        "👨‍💼 Кирилл: @KDisemR\n"
+        "👨‍💻 Слава: @Senko_Bruh"
+    )
+    await message.answer(text, parse_mode="HTML")
+```
+###4.2 Отправка нескольких фото (галерея)
+```bash
+python
+from aiogram.types import InputMediaPhoto
+
+@dp.message(Command("gallery"))
+async def cmd_gallery(message: types.Message):
+    media = [
+        InputMediaPhoto(media="FILE_ID_1", caption="Мокси — светская львица"),
+        InputMediaPhoto(media="FILE_ID_2", caption="Ржавый — старый робот"),
+        InputMediaPhoto(media="FILE_ID_3", caption="Винт — механик-романтик"),
+    ]
+    await message.answer_media_group(media)
+[ИЛЛЮСТРАЦИЯ №7] Сделайте скриншот работы команды /gallery (3 фото с подписями). Сохраните как images/7-gallery-example.png
+
+https://images/7-gallery-example.png
+```
+### 4.3 Получение file_id для фото
+```bash
+python
+@dp.message()
+async def get_file_id(message: types.Message):
+    if message.photo:
+        file_id = message.photo[-1].file_id
+        await message.answer(f"File ID: `{file_id}`", parse_mode="Markdown")
+```
