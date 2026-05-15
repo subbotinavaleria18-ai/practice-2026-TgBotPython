@@ -113,7 +113,8 @@ cd steamleaf-bot
 
 Создайте виртуальное окружение:
 
-```python -m venv venv
+```python
+-m venv venv
 ```
 Активируйте его:
 ```bash
