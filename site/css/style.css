@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', 'Inter', sans-serif;
     background: #0a0a0a;
     color: #e0e0e0;
     line-height: 1.5;
@@ -19,8 +19,8 @@ body {
 }
 
 header {
-    background: #0f0f0f;
-    border-bottom: 1px solid #222;
+    background: #0f1422;
+    border-bottom: 1px solid #2a2f42;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -28,21 +28,22 @@ header {
 }
 
 .header-container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0.8rem 1.5rem;
+    padding: 0.5rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 .logo {
     display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .logo-icon {
@@ -50,41 +51,41 @@ header {
 }
 
 .logo-text {
-    font-size: 1.1rem;
-    font-weight: 600;
     color: #c48a5a;
 }
 
 .logo-sub {
     font-size: 0.65rem;
-    color: #777;
+    color: #7f8aa8;
 }
 
 nav {
     display: flex;
-    gap: 0.2rem;
+    gap: 0.3rem;
     flex-wrap: wrap;
 }
 
 .nav-btn {
     background: none;
     border: none;
-    color: #aaa;
-    font-size: 0.8rem;
+    color: #cbd5ff;
+    font-size: 0.85rem;
     font-weight: 500;
     padding: 0.4rem 1rem;
+    border-radius: 40px;
     cursor: pointer;
     transition: 0.2s;
     font-family: inherit;
 }
 
 .nav-btn:hover {
-    color: #c48a5a;
+    color: #ff7b4a;
+    background: rgba(255, 123, 74, 0.1);
 }
 
 .nav-btn.active {
-    color: #c48a5a;
-    border-bottom: 2px solid #c48a5a;
+    color: #ff7b4a;
+    background: rgba(255, 123, 74, 0.15);
 }
 
 main {
@@ -92,7 +93,7 @@ main {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 1.5rem;
 }
@@ -113,22 +114,21 @@ main {
 
 .hero {
     text-align: center;
-    padding: 1.5rem 1rem;
-    border-bottom: 1px solid #222;
+    padding: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
 .hero h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #c48a5a;
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
 
 .hero p {
-    font-size: 0.85rem;
-    color: #999;
-    max-width: 650px;
+    font-size: 0.9rem;
+    color: #9a9a9a;
+    max-width: 700px;
     margin: 0 auto;
 }
 
@@ -136,12 +136,12 @@ main {
     display: flex;
     gap: 1.2rem;
     padding: 1.2rem 0;
-    border-bottom: 1px solid #222;
+    border-bottom: 1px solid #2a2f42;
 }
 
 .feature-icon {
-    font-size: 1.8rem;
-    min-width: 45px;
+    font-size: 2rem;
+    min-width: 50px;
 }
 
 .feature-content {
@@ -150,21 +150,21 @@ main {
 
 .feature-content h2 {
     color: #c48a5a;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-bottom: 0.4rem;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .feature-content p {
     color: #aaa;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-bottom: 0.4rem;
 }
 
 .features-list {
     margin-left: 1.2rem;
     color: #aaa;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin-bottom: 0.4rem;
 }
 
@@ -175,7 +175,7 @@ main {
 .detail-link {
     color: #c48a5a;
     text-decoration: none;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
@@ -202,7 +202,7 @@ main {
 .media-title {
     color: #c48a5a;
     margin-bottom: 0.8rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
 .video-wrapper {
@@ -221,17 +221,18 @@ main {
 }
 
 .media-caption {
-    font-size: 0.65rem;
-    color: #666;
+    font-size: 0.7rem;
+    color: #777;
     text-align: center;
     margin-top: 0.4rem;
 }
 
 .card, .team-card, .news-card, .resource-item, .bot-card {
-    background: #111;
-    border: 1px solid #222;
+    background: #111622;
+    border: 1px solid #2a2f42;
     padding: 1rem;
     margin-bottom: 1rem;
+    border-radius: 8px;
 }
 
 .card h2, .team-card h3, .bot-card h3 {
@@ -242,7 +243,7 @@ main {
 
 .card p, .team-card p, .bot-card p {
     color: #aaa;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 .team-grid {
@@ -257,7 +258,7 @@ main {
 }
 
 .team-contribution-list li {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     color: #888;
     margin-bottom: 0.2rem;
 }
@@ -275,12 +276,12 @@ main {
 
 .news-date {
     color: #c48a5a;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     margin-bottom: 0.2rem;
 }
 
 .news-title {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 0.2rem;
 }
@@ -288,14 +289,14 @@ main {
 .resources-list {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
     margin: 1rem 0;
 }
 
 .resource-item a {
     color: #c48a5a;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 .resource-item a:hover {
@@ -306,37 +307,31 @@ main {
     display: inline-block;
     background: #c48a5a;
     color: #0a0a0a;
-    padding: 0.4rem 0.9rem;
+    padding: 0.4rem 1rem;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.8rem;
     margin-top: 0.5rem;
+    border-radius: 20px;
 }
 
 .bot-button:hover {
     background: #d49a6a;
 }
 
-.demo-block {
-    background: #111;
-    padding: 0.8rem;
-    text-align: center;
-    margin-top: 1rem;
-}
-
 footer {
-    background: #050505;
-    border-top: 1px solid #222;
-    padding: 0.8rem;
+    background: #0b101a;
+    border-top: 1px solid #2a2f42;
+    padding: 1rem;
     text-align: center;
-    font-size: 0.6rem;
-    color: #666;
+    font-size: 0.7rem;
+    color: #7f8aa8;
     margin-top: auto;
 }
 
 .footer-tags {
     margin-top: 0.2rem;
-    font-size: 0.55rem;
+    font-size: 0.6rem;
 }
 
 @media (max-width: 700px) {
@@ -349,7 +344,7 @@ footer {
         gap: 0.5rem;
     }
     .hero h1 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
     .container {
         padding: 1rem;
