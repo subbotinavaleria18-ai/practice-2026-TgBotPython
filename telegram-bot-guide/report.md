@@ -247,59 +247,21 @@ python src/main.py
 Если всё сделано правильно, бот ответит: «Привет! Я бот Steamleaf!»
 Примечание: Иллюстрация №6 уже была указана выше — это скриншот с ответом бота.
 
-##4. Примеры кода
-### 4.1 Команда с HTML-форматированием (обратная связь)
-```python
-@dp.message(Command("feedback"))
-async def cmd_feedback(message: types.Message):
-    text = (
-        "📬 <b>Обратная связь</b>\n"
-        "Если у вас есть вопросы, пишите нам.\n\n"
-        "👨‍💼 Кирилл: @KDisemR\n"
-        "👨‍💻 Слава: @Senko_Bruh"
-    )
-    await message.answer(text, parse_mode="HTML")
-```
-###4.2 Отправка нескольких фото (галерея)
-```python
-from aiogram.types import InputMediaPhoto
-
-@dp.message(Command("gallery"))
-async def cmd_gallery(message: types.Message):
-    media = [
-        InputMediaPhoto(media="FILE_ID_1", caption="Мокси — светская львица"),
-        InputMediaPhoto(media="FILE_ID_2", caption="Ржавый — старый робот"),
-        InputMediaPhoto(media="FILE_ID_3", caption="Винт — механик-романтик"),
-    ]
-    await message.answer_media_group(media)
-[ИЛЛЮСТРАЦИЯ №7] Сделайте скриншот работы команды /gallery (3 фото с подписями). Сохраните как images/7-gallery-example.png
-
-https://images/7-gallery-example.png
-```
-### 4.3 Получение file_id для фото
-```python
-@dp.message()
-async def get_file_id(message: types.Message):
-    if message.photo:
-        file_id = message.photo[-1].file_id
-        await message.answer(f"File ID: `{file_id}`", parse_mode="Markdown")
-```
-
 ---
 
-## 5. Модификация проекта
+## 4. Модификация проекта
 
-### 5.1 Выбранная модификация
+### 4.1 Выбранная модификация
 
 **Добавление визуального сопровождения ко всем действиям бота и улучшение галереи персонажей.**
 
-### 5.2 Обоснование выбора
+### 4.2 Обоснование выбора
 
 В базовой версии бот отвечал только текстом. Это делало взаимодействие с ботом менее наглядным и интересным. Пользователи получали много текста без визуального сопровождения, что снижало вовлечённость.
 
 Также в команде `/gallery` описание персонажей было только внутри подписей к фото. При быстром просмотре пользователь мог пропустить важную информацию о персонажах.
 
-### 5.3 Что было (до модификации)
+### 4.3 Что было (до модификации)
 
 - Команда `/start` — только текст
 - Команда `/tutorial` — только текст
@@ -307,7 +269,7 @@ async def get_file_id(message: types.Message):
 - Команда `/feedback` — только текст
 - Команда `/gallery` — 3 фото с подписями, но без отдельного описания персонажей
 
-### 5.4 Что стало (после модификации)
+### 4.4 Что стало (после модификации)
 
 1. **Визуальное сопровождение всех команд:**
    - `/start` — приветственное изображение + текст
@@ -320,9 +282,9 @@ async def get_file_id(message: types.Message):
    - Каждое фото сопровождается расширенной подписью
    - Добавлена интерактивная клавиатура для выбора персонажа
 
-### 5.5 Реализация
+### 4.5 Реализация
 
-#### 5.5.1 Улучшенная команда /start
+#### 4.4.1 Улучшенная команда /start
 
 ```python
 from aiogram.types import InputFile
@@ -337,7 +299,7 @@ async def cmd_start(message: types.Message):
     photo = InputFile("images/start_preview.png")  # или file_id
     await message.answer_photo(photo=photo, caption=text)
 ```
-### 5.5.2 Улучшенная команда /gallery (с описанием персонажей)
+### 4.4.2 Улучшенная команда /gallery (с описанием персонажей)
 ```python
 from aiogram.types import InputMediaPhoto
 
@@ -375,7 +337,7 @@ async def cmd_gallery(message: types.Message):
     await message.answer_media_group(media)
 ```
 
-##5.5.3 Пример для команды /tutorial
+##4.4.3 Пример для команды /tutorial
 ```python
 @dp.message(Command("tutorial"))
 async def cmd_tutorial(message: types.Message):
@@ -399,7 +361,7 @@ async def cmd_feedback(message: types.Message):
     await message.answer_photo(photo=photo, caption=text, parse_mode="Markdown")
 ```
 
-### 5.6 Результаты модификации
+### 4.6 Результаты модификации
 - Бот стал визуально привлекательнее
 - Пользователи лучше запоминают персонажей (текст + фото)
 - Информация о персонажах не теряется при быстром просмотре
@@ -408,7 +370,7 @@ async def cmd_feedback(message: types.Message):
 
 ---
 
-## 6. Заключение
+## 5. Заключение
 
 В данном руководстве была рассмотрена технология создания Telegram-бота на библиотеке aiogram для Python.
 
