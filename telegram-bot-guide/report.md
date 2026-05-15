@@ -111,3 +111,17 @@ mkdir steamleaf-bot
 cd steamleaf-bot
 ```
 
+Создайте виртуальное окружение:
+
+```bash
+python -m venv venv
+```
+Активируйте его:
+```bash
+# Windows:
+venv\Scripts\activate
+```
+```bash
+# Mac/Linux:
+source venv/bin/activate
+```
