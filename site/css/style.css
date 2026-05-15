@@ -1,4 +1,4 @@
-/* STEAMLEAF — СТИЛЬ ТОЧНО КАК НА РЕФЕРЕНСЕ */
+/* STEAMLEAF — ДИЗАЙН ТОЧНО КАК НА РЕФЕРЕНСЕ */
 * {
     margin: 0;
     padding: 0;
@@ -115,7 +115,7 @@ main {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* HERO (как на референсе) */
+/* HERO — КАК НА РЕФЕРЕНСЕ */
 .hero {
     text-align: center;
     padding: 1.5rem 1rem;
@@ -137,7 +137,7 @@ main {
     margin: 0 auto;
 }
 
-/* БЛОКИ КАК НА РЕФЕРЕНСЕ */
+/* БЛОКИ — КАК НА РЕФЕРЕНСЕ */
 .feature-block {
     display: flex;
     gap: 1.2rem;
@@ -156,9 +156,10 @@ main {
 
 .feature-content h2 {
     color: #c48a5a;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 0.4rem;
-    font-weight: 500;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
 .feature-content p {
@@ -184,14 +185,14 @@ main {
     text-decoration: none;
     font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
 }
 
 .detail-link:hover {
     text-decoration: underline;
 }
 
-/* ЦИТАТА (как на референсе) */
+/* ЦИТАТА — КАК НА РЕФЕРЕНСЕ */
 .quote-block {
     text-align: center;
     padding: 1.5rem;
@@ -205,13 +206,12 @@ main {
     line-height: 1.4;
 }
 
-/* КАРТОЧКИ ДЛЯ ДРУГИХ СТРАНИЦ */
+/* КАРТОЧКИ ДЛЯ ОСТАЛЬНЫХ СТРАНИЦ */
 .card, .team-card, .news-card, .resource-item, .bot-card {
     background: #111;
     border: 1px solid #222;
     padding: 1rem;
     margin-bottom: 1rem;
-    border-radius: 0;
 }
 
 .card h2, .team-card h3, .bot-card h3 {
@@ -223,7 +223,6 @@ main {
 .card p, .team-card p, .bot-card p {
     color: #aaa;
     font-size: 0.8rem;
-    line-height: 1.4;
 }
 
 /* УЧАСТНИКИ */
@@ -299,53 +298,6 @@ main {
 
 .bot-button:hover {
     background: #d49a6a;
-}
-
-/* ВИДЕО */
-.media-section {
-    margin: 1.5rem 0;
-}
-
-.media-title {
-    color: #c48a5a;
-    margin-bottom: 0.8rem;
-    font-size: 0.9rem;
-}
-
-.video-wrapper {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-}
-
-.video-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #333;
-}
-
-.media-caption {
-    font-size: 0.65rem;
-    color: #666;
-    text-align: center;
-    margin-top: 0.4rem;
-}
-
-.scheme-placeholder {
-    background: #0a0a0a;
-    border: 1px solid #222;
-    padding: 0.8rem;
-    text-align: center;
-}
-
-.demo-block {
-    background: #111;
-    padding: 0.8rem;
-    text-align: center;
-    margin-top: 1rem;
 }
 
 /* ПОДВАЛ */
