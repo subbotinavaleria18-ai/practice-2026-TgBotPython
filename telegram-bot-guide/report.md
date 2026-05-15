@@ -113,8 +113,7 @@ cd steamleaf-bot
 
 Создайте виртуальное окружение:
 
-```bash
-python -m venv venv
+```python -m venv venv
 ```
 Активируйте его:
 ```bash
@@ -136,8 +135,7 @@ pip install aiogram
 
 Создайте файл src/main.py:
 
-```bash
-python
+```python
 import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
@@ -159,8 +157,8 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 ### Шаг 6: Запуск бота
-```bash
-python src/main.py
+```python
+src/main.py
 ```
 Вы увидите «Бот запущен....» Откройте Telegram и напишите /start вашему боту.
 
@@ -170,8 +168,7 @@ https://images/6-bot-working.png
 
 ##4. Примеры кода
 ### 4.1 Команда с HTML-форматированием (обратная связь)
-```bash
-python
+```python
 @dp.message(Command("feedback"))
 async def cmd_feedback(message: types.Message):
     text = (
@@ -183,8 +180,7 @@ async def cmd_feedback(message: types.Message):
     await message.answer(text, parse_mode="HTML")
 ```
 ###4.2 Отправка нескольких фото (галерея)
-```bash
-python
+```python
 from aiogram.types import InputMediaPhoto
 
 @dp.message(Command("gallery"))
@@ -200,11 +196,142 @@ async def cmd_gallery(message: types.Message):
 https://images/7-gallery-example.png
 ```
 ### 4.3 Получение file_id для фото
-```bash
-python
+```python
 @dp.message()
 async def get_file_id(message: types.Message):
     if message.photo:
         file_id = message.photo[-1].file_id
         await message.answer(f"File ID: `{file_id}`", parse_mode="Markdown")
 ```
+
+markdown
+## 5. Модификация проекта (творческий пункт)
+
+### 5.1 Выбранная модификация
+
+**Добавление визуального сопровождения ко всем действиям бота и улучшение галереи персонажей.**
+
+### 5.2 Обоснование выбора
+
+В базовой версии бот отвечал только текстом. Это делало взаимодействие с ботом менее наглядным и интересным. Пользователи получали много текста без визуального сопровождения, что снижало вовлечённость.
+
+Также в команде `/gallery` описание персонажей было только внутри подписей к фото. При быстром просмотре пользователь мог пропустить важную информацию о персонажах.
+
+### 5.3 Что было (до модификации)
+
+- Команда `/start` — только текст
+- Команда `/tutorial` — только текст
+- Команда `/news` — только текст
+- Команда `/feedback` — только текст
+- Команда `/gallery` — 3 фото с подписями, но без отдельного описания персонажей
+
+### 5.4 Что стало (после модификации)
+
+1. **Визуальное сопровождение всех команд:**
+   - `/start` — приветственное изображение + текст
+   - `/tutorial` — изображение с тематикой обучения + текст
+   - `/news` — изображение-анонс + текст новостей
+   - `/feedback` — изображение с контактами + текст
+
+2. **Улучшенная галерея персонажей:**
+   - Добавлено текстовое описание всех персонажей перед галереей
+   - Каждое фото сопровождается расширенной подписью
+   - Добавлена интерактивная клавиатура для выбора персонажа
+
+### 5.5 Реализация
+
+#### 5.5.1 Улучшенная команда /start
+
+```python
+from aiogram.types import InputFile
+
+@dp.message(Command("start"))
+async def cmd_start(message: types.Message):
+    text = (
+        "Добро пожаловать в «Steamleaf» — единственный в мире симулятор раздатчика листовок! "
+        "Вам предстоит пройти путь от скромного промоутера до легенды уличного маркетинга."
+    )
+    # Отправка изображения с текстом
+    photo = InputFile("images/start_preview.png")  # или file_id
+    await message.answer_photo(photo=photo, caption=text)
+5.5.2 Улучшенная команда /gallery (с описанием персонажей)
+python
+from aiogram.types import InputMediaPhoto
+
+@dp.message(Command("gallery"))
+async def cmd_gallery(message: types.Message):
+    # Сначала отправляем общее описание персонажей
+    description = (
+        "🎭 *Персонажи игры «Steamleaf»*\n\n"
+        "В мире Steamleaf вас встречают колоритные персонажи, "
+        "каждый со своей историей и характером:\n\n"
+        "👸 *Мокси* — светская львица, любит вечеринки и выгодные знакомства. "
+        "Может помочь попасть в высшее общество, но потребует взамен услугу.\n\n"
+        "🤖 *Ржавый* — старый заводской робот, местный талисман и философ. "
+        "Любит давать мудрые (и не очень) советы. Знает всё о городе.\n\n"
+        "🔧 *Винт* — механик-романтик, меняет масло и шутит про судьбу. "
+        "Может улучшить вашу экипировку за небольшую плату."
+    )
+    await message.answer(description, parse_mode="Markdown")
+
+    # Затем отправляем галерею с фото
+    media = [
+        InputMediaPhoto(
+            media="FILE_ID_MOXI",
+            caption="👸 *Мокси*\nСветская львица. Любит вечеринки и выгодные знакомства."
+        ),
+        InputMediaPhoto(
+            media="FILE_ID_RUSTY",
+            caption="🤖 *Ржавый*\nСтарый заводской робот. Местный талисман и философ."
+        ),
+        InputMediaPhoto(
+            media="FILE_ID_VINT",
+            caption="🔧 *Винт*\nМеханик-романтик. Меняет масло и шутит про судьбу."
+        ),
+    ]
+    await message.answer_media_group(media)
+```
+5.5.3 Пример для команды /tutorial
+python
+@dp.message(Command("tutorial"))
+async def cmd_tutorial(message: types.Message):
+    text = (
+        "📖 *Пролог*\n\n"
+        "Вы — обычный парень, который устраивается раздавать листовки..."
+    )
+    photo = InputFile("images/tutorial_preview.png")  # или file_id
+    await message.answer_photo(photo=photo, caption=text, parse_mode="Markdown")
+5.5.4 Команда /feedback с изображением
+python
+@dp.message(Command("feedback"))
+async def cmd_feedback(message: types.Message):
+    text = (
+        "📬 *Обратная связь*\n\n"
+        "Если у вас есть вопросы, предложения или вы нашли баг — пишите нам.\n\n"
+        "👨‍💼 Кирилл — тимлид: @KDisemR\n"
+        "👨‍💻 Слава — техтимлид: @Senko_Bruh"
+    )
+    photo = InputFile("images/feedback.png")  # или file_id
+    await message.answer_photo(photo=photo, caption=text, parse_mode="Markdown")
+5.6 Результаты модификации
+✅ Бот стал визуально привлекательнее
+
+✅ Пользователи лучше запоминают персонажей (текст + фото)
+
+✅ Информация о персонажах не теряется при быстром просмотре
+
+✅ Все команды теперь имеют визуальное сопровождение
+
+✅ Повышение вовлечённости пользователей
+
+5.7 Создание изображений для бота
+Для реализации модификации необходимо создать следующие изображения:
+
+Изображение	Описание	Куда сохранить
+start_preview.png	Приветственная картинка для команды /start	src/images/
+tutorial_preview.png	Иллюстрация к обучению /tutorial	src/images/
+news_preview.png	Изображение к новостям /news	src/images/
+feedback.png	Изображение с контактами для /feedback	src/images/
+moxi.png	Портрет персонажа Мокси	src/images/
+rusty.png	Портрет персонажа Ржавый	src/images/
+vint.png	Портрет персонажа Винт	src/images/
