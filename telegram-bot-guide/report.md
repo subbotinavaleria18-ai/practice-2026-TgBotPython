@@ -61,7 +61,7 @@ Telegram-боты — это автоматизированные аккаунт
 | RPG World Bot | ✅ | ✅ | ❌ | ✅ | ❌ |
 | Quest Adventure | ✅ | ❌ | ✅ | ❌ | ✅ |
 | SimCity Helper | ✅ | ✅ | ✅ | ❌ | ❌ |
-| **Steamleaf ** | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Steamleaf | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 Таблица 1.3.1 — Сравнение функционала игровых Telegram-ботов
 
