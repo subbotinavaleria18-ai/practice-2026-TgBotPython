@@ -82,7 +82,7 @@ Telegram-боты — это автоматизированные аккаунт
 
 Проект построен по классической схеме "Telegram Bot API ↔ aiogram ↔ Обработчики команд".
 
-`[ИЛЛЮСТРАЦИЯ №3]` Нарисуйте UML-диаграмму компонентов: User → Telegram → Dispatcher → Handlers → Bot. Сохраните как `images/3-uml-components.png`
+<img width="682" height="61" alt="Диаграмма без названия drawio (7)" src="https://github.com/user-attachments/assets/f4201939-cedd-4c8c-9d4f-8b837da99f14" />
 
 ![Рисунок 3 — UML-диаграмма компонентов Telegram-бота](images/3-uml-components.png)
 
