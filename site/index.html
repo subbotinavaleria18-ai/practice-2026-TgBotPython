@@ -4,14 +4,353 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Steamleaf — симулятор раздачи листовок</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b0704;
+            background-image: radial-gradient(circle at 10% 20%, #1e150e 0%, #030201 100%);
+            color: #ffffff; /* основной текст теперь белый */
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 2px, transparent 2px, transparent 8px);
+            z-index: 999;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* header */
+        .header {
+            border-bottom: 2px solid #5c3b1f;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .site-logo {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+            background: #2c1d12;
+            border-radius: 16px;
+            padding: 8px;
+        }
+
+        .logo-area h1 {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #f3bc84, #c98141);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-area p {
+            color: #d9a066;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        .steam-badge {
+            background: #1f140c;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            border-left: 4px solid #c98141;
+        }
+
+        .steam-badge a {
+            color: #f3bc84;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .steam-badge a:hover {
+            color: #ffcd94;
+        }
+
+        /* tabs */
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+            margin: 2rem 0 1.5rem;
+            border-bottom: 1px solid #3c2a1c;
+        }
+
+        .tab-btn {
+            background: #1c130d;
+            border: none;
+            padding: 0.8rem 1.6rem;
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: inherit;
+            color: #deb887;
+            cursor: pointer;
+            border-radius: 12px 12px 0 0;
+            transition: 0.2s;
+        }
+
+        .tab-btn.active {
+            background: #2c1d12;
+            color: #fff0db;
+            border-bottom: 3px solid #c98141;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #2a1b0f;
+            color: #f3bc84;
+        }
+
+        /* tab content */
+        .tab-content {
+            display: none;
+            background: rgba(10, 7, 5, 0.75);
+            backdrop-filter: blur(2px);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid #4a2f1a;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            margin-bottom: 2rem;
+        }
+
+        .tab-content.active-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-left: 6px solid #c98141;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            color: #f8e2c0;
+        }
+
+        h3 {
+            color: #f0cca6;
+            margin: 1.2rem 0 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        p, li {
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .highlight {
+            background: #1e140e;
+            border-left: 3px solid #c98141;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: #ffe2c4;
+        }
+
+        .game-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .card {
+            background: #140e08;
+            border: 1px solid #5a3a1f;
+            border-radius: 24px;
+            padding: 1.2rem;
+            flex: 1 1 240px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #c98141;
+            transform: translateY(-5px);
+        }
+
+        .member-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .member {
+            background: #19110a;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            border: 1px solid #3f2a18;
+            font-size: 0.9rem;
+            color: #f0dbbc;
+        }
+
+        .news-item {
+            border-bottom: 1px dashed #5b3c20;
+            padding: 1rem 0;
+        }
+
+        .date {
+            color: #c9a87c;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        .btn-drive, .btn-telegram, .btn-resource {
+            display: inline-block;
+            background: #2c1d12;
+            padding: 0.7rem 1.3rem;
+            margin: 0.5rem 1rem 0.5rem 0;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #f5e2c8;
+            border: 1px solid #6a4729;
+            transition: 0.2s;
+        }
+
+        .btn-drive:hover, .btn-telegram:hover, .btn-resource:hover {
+            background: #4e341e;
+            color: #ffffff;
+            border-color: #c98141;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+        .resource-list li {
+            margin: 0.8rem 0;
+            padding-left: 1.2rem;
+            border-left: 2px solid #c98141;
+        }
+        .resource-list a {
+            color: #f3bc84;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .resource-list a:hover {
+            text-decoration: underline;
+            color: #ffdaa5;
+        }
+
+        .image-placeholder {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+        .game-img {
+            background: #1f140c;
+            border-radius: 20px;
+            width: 200px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #5e3c20;
+            color: #c98f5e;
+            font-size: 0.8rem;
+            text-align: center;
+            flex-direction: column;
+            gap: 8px;
+            transition: 0.2s;
+        }
+        .game-img span {
+            font-size: 2rem;
+        }
+        .game-img p {
+            margin: 0;
+            font-size: 0.7rem;
+            color: #c68f5a;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #3b2a1b;
+            font-size: 0.8rem;
+            color: #b48a62;
+        }
+
+        a {
+            color: #f0bc84;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1rem;
+            }
+            .tab-btn {
+                padding: 0.5rem 0.9rem;
+                font-size: 0.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .logo-area h1 {
+                font-size: 1.8rem;
+            }
+            .site-logo {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        ::selection {
+            background: #7a451e;
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
         <div class="logo-area">
-            <img src="images/logo.png" alt="Steamleaf Logo" class="site-logo" onerror="this.style.display='none'">
+            <!-- лого-заглушка: красивая иконка в виде листа, но можно заменить на свой файл images/logo.png -->
+            <div class="site-logo" style="display: flex; align-items: center; justify-content: center; background: #2c1d12; border-radius: 20px;">
+                <span style="font-size: 38px;">🍂</span>
+            </div>
             <h1>STEAMLEAF</h1>
             <p>симулятор раздачи листовок — мрачная сатира на городскую повседневность</p>
         </div>
@@ -21,17 +360,25 @@
         </div>
     </div>
 
-    <!-- навигация вкладки -->
+    <!-- вкладки: добавили "Ресурсы" и "Телеграм бот" -->
     <div class="tabs-nav">
         <button class="tab-btn active" data-tab="main">Главная</button>
-        <button class="tab-btn" data-tab="team">Участники проекта</button>
+        <button class="tab-btn" data-tab="team">Участники</button>
         <button class="tab-btn" data-tab="news">Новости</button>
         <button class="tab-btn" data-tab="gameplay">Геймплей & дизайн</button>
+        <button class="tab-btn" data-tab="resources">Ресурсы</button>
+        <button class="tab-btn" data-tab="telegram">🤖 Telegram-бот</button>
     </div>
 
-    <!-- РАЗДЕЛ ГЛАВНАЯ -->
+    <!-- ГЛАВНАЯ (описание, сюжет + картинки) -->
     <div id="main" class="tab-content active-content">
         <h2>📜 ОПИСАНИЕ ИГРЫ</h2>
+        <!-- вставлены картинки-заглушки (визуальный ряд) -->
+        <div class="image-placeholder">
+            <div class="game-img"><span>🌆</span><p>Мрачный город</p></div>
+            <div class="game-img"><span>📄</span><p>Раздача листовок</p></div>
+            <div class="game-img"><span>🗣️</span><p>Диалоги с NPC</p></div>
+        </div>
         <p><strong>Steamleaf — симулятор раздачи листовок</strong> — инди-проект, погружающий в безрадостную рутину промоутера в вымышленном городе с нуарным оттенком. Выдавая рекламные флаеры прохожим, вы сталкиваетесь с абсурдными диалогами, агрессивными NPC, усталостью и деградацией городской инфраструктуры. Игроку предстоит балансировать между выносливостью, репутацией и едким юмором реальности низкоквалифицированного труда.</p>
         <div class="highlight">
             ⚙️ Ключевые особенности: система репутации, динамические QTE-события, нелинейные диалоги, смешанный визуальный стиль 2D/3D, механика выносливости и деградации города.
@@ -44,7 +391,7 @@
         </div>
     </div>
 
-    <!-- РАЗДЕЛ УЧАСТНИКИ ПРОЕКТА -->
+    <!-- УЧАСТНИКИ -->
     <div id="team" class="tab-content">
         <h2>🧩 КОМАНДА РАЗРАБОТКИ</h2>
         <p>Студенты Московского Политеха, факультет информационных технологий, работающие в рамках проектного трека.</p>
@@ -59,73 +406,82 @@
             <div class="member"><strong>🚀 Менеджеры по продвижению:</strong> Екатерина Бородина, Анастасия Власова, Андрей Морев</div>
             <div class="member"><strong>📄 Техническая документация:</strong> Артём Лыхин</div>
         </div>
-        <div class="highlight" style="margin-top: 20px;">
-            Всего в проекте задействовано 26 исполнителей. Полная синергия 2D/3D и мрачного сеттинга — результат командной работы.
-        </div>
+        <div class="highlight">⭐ Всего задействовано 26 исполнителей. Полная синергия 2D/3D и мрачного сеттинга.</div>
     </div>
 
-    <!-- РАЗДЕЛ НОВОСТИ -->
+    <!-- НОВОСТИ -->
     <div id="news" class="tab-content">
         <h2>📰 ПОСЛЕДНИЕ НОВОСТИ</h2>
-        <div class="news-item">
-            <div class="date">15 апреля 2026</div>
-            <strong>Защита пояснительной записки и презентация прототипа</strong>
-            <p>Проект прошёл промежуточную аттестацию. Отмечена уникальная система QTE на турнике и деградация города.</p>
-        </div>
-        <div class="news-item">
-            <div class="date">10 апреля 2026</div>
-            <strong>Демо на Дне открытых дверей Московского Политеха</strong>
-            <p>Альфа-версия вызвала интерес — особенно диалоговая система и мрачный стиль "2D-спрайты в 3D-мире".</p>
-        </div>
-        <div class="news-item">
-            <div class="date">25 марта 2026</div>
-            <strong>Завершён вертикальный срез</strong>
-            <p>Интегрирована billboard-система персонажей, механика выносливости и алгоритм поломки автоматов.</p>
-        </div>
-        <div class="news-item">
-            <div class="date">02 февраля 2026</div>
-            <strong>Инициация проекта Steamleaf</strong>
-            <p>Студенты запустили собственный симулятор раздачи листовок. Проект поддержан вузом.</p>
-        </div>
-        <p style="margin-top: 1rem;">🔔 Следите за новостями в Telegram-боте: <a href="https://t.me/Steamleaf_bot" target="_blank">t.me/Steamleaf_bot</a></p>
+        <div class="news-item"><div class="date">15 апреля 2026</div><strong>Защита пояснительной записки</strong><p>Проект прошёл аттестацию. Отмечена уникальная QTE-система.</p></div>
+        <div class="news-item"><div class="date">10 апреля 2026</div><strong>Демо на Дне открытых дверей</strong><p>Альфа-версия получила восторженные отзывы.</p></div>
+        <div class="news-item"><div class="date">25 марта 2026</div><strong>Вертикальный срез завершён</strong><p>Интегрирована billboard-система и алгоритм поломки автоматов.</p></div>
+        <div class="news-item"><div class="date">02 февраля 2026</div><strong>Инициация проекта Steamleaf</strong><p>Старт разработки при поддержке вуза.</p></div>
+        <p style="margin-top: 1rem;">🔔 Все новости в Telegram: <a href="https://t.me/Steamleaf_bot" target="_blank">t.me/Steamleaf_bot</a></p>
     </div>
 
-    <!-- РАЗДЕЛ ГЕЙМПЛЕЙ И ДИЗАЙН -->
+    <!-- ГЕЙМПЛЕЙ И ДИЗАЙН + картинки -->
     <div id="gameplay" class="tab-content">
-        <h2>⚙️ ГЕЙМПЛЕЙ, ДИЗАЙН И ТЕХНИЧЕСКИЕ ОСОБЕННОСТИ</h2>
+        <h2>⚙️ ГЕЙМПЛЕЙ, ДИЗАЙН И ТЕХНИКА</h2>
+        <div class="image-placeholder">
+            <div class="game-img"><span>🎮</span><p>QTE-турник</p></div>
+            <div class="game-img"><span>🏙️</span><p>Нуарное метро</p></div>
+            <div class="game-img"><span>📊</span><p>Статусы и выносливость</p></div>
+        </div>
         <div class="game-grid">
-            <div class="card">
-                <h3>🌆 Мрачный дизайн</h3>
-                <p>Тёмная палитра, грязные оттенки коричневого, ржавый металл. Сочетание 2D-спрайтов персонажей и объёмных 3D-локаций создаёт гнетущую атмосферу.</p>
-            </div>
-            <div class="card">
-                <h3>🎲 Игровые механики</h3>
-                <p>Система выносливости влияет на скорость. Раздача листовок зависит от типа NPC и выбранной реплики. QTE-ивенты увеличивают максимальное количество листовок.</p>
-            </div>
-            <div class="card">
-                <h3>🤖 ИИ и Диалоги</h3>
-                <p>Репутация игрока влияет на вероятность успешной раздачи. Реализовано через событийную модель Unity/C# с центральным менеджером диалогов.</p>
-            </div>
-            <div class="card">
-                <h3>🎛️ Технический стек</h3>
-                <p>Unity 2022 LTS, C#, GitHub. Все ассеты оригинальны или распространяются по открытым лицензиям. Целевая платформа: ПК.</p>
-            </div>
+            <div class="card"><h3>🌆 Мрачный дизайн</h3><p>Тёмная палитра, ржавый металл, 2D-спрайты в 3D-мире. Гнетущая атмосфера и уникальный стиль Mixed Media.</p></div>
+            <div class="card"><h3>🎲 Игровые механики</h3><p>Система выносливости, репутация, QTE-ивенты. Каждый выбор влияет на концовку.</p></div>
+            <div class="card"><h3>🤖 ИИ и Диалоги</h3><p>Репутация игрока влияет на успех раздачи. Событийная модель диалогов на C#.</p></div>
+            <div class="card"><h3>🎛️ Технический стек</h3><p>Unity 2022 LTS, GitHub, оригинальные ассеты. Патентная чистота проекта.</p></div>
         </div>
-        <h3>🔧 Уникальные формулы и алгоритмы</h3>
+        <h3>🔧 Уникальные формулы</h3>
         <div class="highlight">
-            🧮 Алгоритм деградации города: вероятность поломки автомата P=0.4, минимум один автомат остаётся активен.<br>
-            📈 QTE-механика: прирост переносимых листовок L_new = L_base + n<br>
-            🚶 Модификаторы статусов: «Слабость» — скорость ×0.9; «Скорость» — скорость ×1.2.
+            🧮 Алгоритм деградации: P=0.4 поломки автомата, минимум один рабочий.<br>
+            📈 QTE: L_new = L_base + n (n — успешные подтягивания).<br>
+            🚶 Модификаторы: «Слабость» (V×0.9, выносливость×0.8); «Скорость» (V×1.2).
         </div>
-        <div style="margin-top: 1.5rem;">
-            <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank" class="btn-drive">📁 Скачать концепт-арты (Google Drive)</a>
-            <a href="https://t.me/Steamleaf_bot" target="_blank" class="btn-telegram">💬 Присоединиться к сообществу</a>
+        <div><a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" class="btn-drive">📁 Полный архив артов и билдов</a></div>
+    </div>
+
+    <!-- РЕСУРСЫ (новый раздел: партнёры, статьи, полезные ссылки) -->
+    <div id="resources" class="tab-content">
+        <h2>📚 ПОЛЕЗНЫЕ РЕСУРСЫ И ПАРТНЁРЫ</h2>
+        <p>Материалы, которые помогут глубже погрузиться в концепцию проекта, а также ссылки на организации — партнёров и вдохновляющие статьи.</p>
+        <ul class="resource-list">
+            <li>🎓 <strong>Организация-партнёр:</strong> <a href="https://mospolytech.ru/" target="_blank">Московский политехнический университет</a> — центр проектной деятельности и поддержка студенческих инициатив.</li>
+            <li>📖 <strong>Статья о симуляторах повседневности:</strong> <a href="https://dtf.ru/games/1471886-pochemu-mi-lyubim-igry-pro-rutinu" target="_blank">Почему мы любим игры про рутину? (DTF)</a></li>
+            <li>🎮 <strong>Анализ инди-рынка 2025:</strong> <a href="https://indie-game.ru/trends-2025" target="_blank">Тренды в инди-разработке: социальная сатира</a></li>
+            <li>🛠️ <strong>Unity документация и гайды по Mixed Media:</strong> <a href="https://docs.unity3d.com/2022.3/Documentation/Manual/" target="_blank">Unity Manual (LTS)</a></li>
+            <li>🧠 <strong>Исследование геймдизайна социального взаимодействия:</strong> <a href="https://gamedevelopment.com/social-npc-ai" target="_blank">NPC AI и нелинейные диалоги</a> (англ.)</li>
+            <li>📁 <strong>Google Drive проекта:</strong> <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank">все концепты, билды и презентации</a></li>
+        </ul>
+        <div class="highlight">💡 Партнёрская поддержка и материалы помогают сохранять уникальную атмосферу и патентную чистоту продукта.</div>
+    </div>
+
+    <!-- ТЕЛЕГРАМ-БОТ: описание + прямая ссылка -->
+    <div id="telegram" class="tab-content">
+        <h2>🤖 ОФИЦИАЛЬНЫЙ TELEGRAM-БОТ</h2>
+        <div class="image-placeholder">
+            <div class="game-img"><span>📱</span><p>Бот-помощник</p></div>
+            <div class="game-img"><span>🎮</span><p>Новости проекта</p></div>
+            <div class="game-img"><span>🗳️</span><p>Обратная связь</p></div>
         </div>
+        <p>Бот <strong>@Steamleaf_bot</strong> — ваш проводник в мир мрачных листовок. Получайте актуальные новости разработки, участвуйте в опросах, узнавайте о скрытых механиках симулятора, а также делитесь впечатлениями напрямую с командой.</p>
+        <div class="highlight">
+            ✅ <strong>Возможности бота:</strong><br>
+            — Ежедневные уведомления о статусе разработки.<br>
+            — Мини-игры по мотивам QTE из Steamleaf.<br>
+            — Справочник по NPC и диалоговым веткам.<br>
+            — Прямая связь с менеджерами проекта.
+        </div>
+        <p style="margin: 1rem 0;">Присоединяйтесь к сообществу, чтобы первыми узнавать о демо-версиях и влиять на развитие игры!</p>
+        <a href="https://t.me/Steamleaf_bot" target="_blank" class="btn-telegram" style="font-size: 1.2rem; padding: 0.8rem 2rem;">🔗 Перейти в Telegram-бота → @Steamleaf_bot</a>
+        <p style="margin-top: 1rem;">📌 <em>Бот создан для оперативной обратной связи и публикации эксклюзивных материалов: арты, саундтреки, интервью с разработчиками.</em></p>
     </div>
 
     <footer>
         <p>© 2026 Студенческий проект «Steamleaf — симулятор раздачи листовок» | Московский Политех<br>
-        <span style="color:#5f422b;">⚙️ Мрачный инди-симулятор. Ни одна листовка не будет роздана без боли.</span></p>
+        <span>⚙️ Мрачный инди-симулятор. Ни одна листовка не будет роздана без боли.</span><br>
+        📍 По всем вопросам: <a href="https://t.me/Steamleaf_bot" target="_blank">@Steamleaf_bot</a></p>
     </footer>
 </div>
 
@@ -135,20 +491,26 @@
 
     function switchTab(tabId) {
         contents.forEach(content => content.classList.remove('active-content'));
-        document.getElementById(tabId)?.classList.add('active-content');
+        const activeTab = document.getElementById(tabId);
+        if(activeTab) activeTab.classList.add('active-content');
         tabs.forEach(btn => btn.classList.remove('active'));
-        document.querySelector(`.tab-btn[data-tab="${tabId}"]`)?.classList.add('active');
+        const currentBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+        if(currentBtn) currentBtn.classList.add('active');
     }
 
     tabs.forEach(btn => {
         btn.addEventListener('click', () => {
             const tabId = btn.getAttribute('data-tab');
-            if(tabId) switchTab(tabId);
+            if(tabId) {
+                switchTab(tabId);
+                window.scrollTo({ top: document.querySelector('.tabs-nav').offsetTop - 20, behavior: 'smooth' });
+            }
         });
     });
 
     const hash = window.location.hash.substring(1);
-    if(['main','team','news','gameplay'].includes(hash)) switchTab(hash);
+    const validTabs = ['main', 'team', 'news', 'gameplay', 'resources', 'telegram'];
+    if(validTabs.includes(hash)) switchTab(hash);
     else switchTab('main');
 </script>
 </body>
