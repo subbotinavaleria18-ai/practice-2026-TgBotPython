@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Steamleaf — симулятор раздачи листовок</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo-area">
+            <img src="images/logo.png" alt="Steamleaf Logo" class="site-logo" onerror="this.style.display='none'">
+            <h1>STEAMLEAF</h1>
+            <p>симулятор раздачи листовок — мрачная сатира на городскую повседневность</p>
+        </div>
+        <div class="steam-badge">
+            🔥 TG-бот: <a href="https://t.me/Steamleaf" target="_blank">@Steamleaf</a> 
+            &nbsp;|&nbsp; 📁 <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank">медиа-архив</a>
+        </div>
+    </div>
 
+    <!-- навигация вкладки -->
+    <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="main">Главная</button>
+        <button class="tab-btn" data-tab="team">Участники проекта</button>
+        <button class="tab-btn" data-tab="news">Новости</button>
+        <button class="tab-btn" data-tab="gameplay">Геймплей & дизайн</button>
+    </div>
+
+    <!-- РАЗДЕЛ ГЛАВНАЯ -->
+    <div id="main" class="tab-content active-content">
+        <h2>📜 ОПИСАНИЕ ИГРЫ</h2>
+        <p><strong>Steamleaf — симулятор раздачи листовок</strong> — инди-проект, погружающий в безрадостную рутину промоутера в вымышленном городе с нуарным оттенком. Выдавая рекламные флаеры прохожим, вы сталкиваетесь с абсурдными диалогами, агрессивными NPC, усталостью и деградацией городской инфраструктуры. Игроку предстоит балансировать между выносливостью, репутацией и едким юмором реальности низкоквалифицированного труда.</p>
+        <div class="highlight">
+            ⚙️ Ключевые особенности: система репутации, динамические QTE-события, нелинейные диалоги, смешанный визуальный стиль 2D/3D, механика выносливости и деградации города.
+        </div>
+        <h3>🍂 ОСНОВНОЙ СЮЖЕТ</h3>
+        <p>Вы — безымянный герой, пытающийся выжить в промозглом мегаполисе. Получив временную работу по раздаче листовок в агентстве «Steamleaf», вы обнаруживаете, что город населён странными личностями: от параноидальных старушек до чиновников-маньяков. С каждым днём улицы становятся грязнее, торговые автоматы ломаются, а начальник придумывает новые штрафы. Сюжет развивается через телефонные звонки, заметки и встречи с неигровыми персонажами. Вас ждёт несколько финалов: от полного выгорания до тайного бунта против системы раздачи листовок.</p>
+        <div style="margin: 1.5rem 0;">
+            <a href="https://t.me/Steamleaf" target="_blank" class="btn-telegram">📢 Обсуждение в Telegram-боте</a>
+            <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank" class="btn-drive">🎮 Посмотреть арты / геймплей (Google Drive)</a>
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ УЧАСТНИКИ ПРОЕКТА -->
+    <div id="team" class="tab-content">
+        <h2>🧩 КОМАНДА РАЗРАБОТКИ</h2>
+        <p>Студенты Московского Политеха, факультет информационных технологий, работающие в рамках проектного трека.</p>
+        <div class="member-list">
+            <div class="member"><strong>🎮 Гейм-дизайн:</strong> Кирилл Плешков, Вячеслав Самодуровский</div>
+            <div class="member"><strong>💻 Программисты (Unity/C#):</strong> Дмитрий Николаенков, Анна Плетнева, Елизавета Попова, Валерия Субботина</div>
+            <div class="member"><strong>🎨 2D-художники:</strong> Елизавета Козырева, Максим Крутяков, Алеся Лагутенко, Евгения Саяхова, Арина Троешестова, Вероника Чиркова</div>
+            <div class="member"><strong>🖌️ 3D-художники:</strong> Артём Бирюков, Екатерина Гагарина, Дарья Гарченко, София Кныш, Дарья Смирнова</div>
+            <div class="member"><strong>📝 Сценаристы:</strong> Пётр Баранов, Дмитрий Попов</div>
+            <div class="member"><strong>🎛️ Звукорежиссёр:</strong> Алиса Кономанина</div>
+            <div class="member"><strong>📐 Графические дизайнеры:</strong> Анора Каримбаева, Максим Кинёв</div>
+            <div class="member"><strong>🚀 Менеджеры по продвижению:</strong> Екатерина Бородина, Анастасия Власова, Андрей Морев</div>
+            <div class="member"><strong>📄 Техническая документация:</strong> Артём Лыхин</div>
+        </div>
+        <div class="highlight" style="margin-top: 20px;">
+            Всего в проекте задействовано 26 исполнителей. Полная синергия 2D/3D и мрачного сеттинга — результат командной работы.
+        </div>
+    </div>
+
+    <!-- РАЗДЕЛ НОВОСТИ -->
+    <div id="news" class="tab-content">
+        <h2>📰 ПОСЛЕДНИЕ НОВОСТИ</h2>
+        <div class="news-item">
+            <div class="date">15 апреля 2026</div>
+            <strong>Защита пояснительной записки и презентация прототипа</strong>
+            <p>Проект прошёл промежуточную аттестацию. Отмечена уникальная система QTE на турнике и деградация города.</p>
+        </div>
+        <div class="news-item">
+            <div class="date">10 апреля 2026</div>
+            <strong>Демо на Дне открытых дверей Московского Политеха</strong>
+            <p>Альфа-версия вызвала интерес — особенно диалоговая система и мрачный стиль "2D-спрайты в 3D-мире".</p>
+        </div>
+        <div class="news-item">
+            <div class="date">25 марта 2026</div>
+            <strong>Завершён вертикальный срез</strong>
+            <p>Интегрирована billboard-система персонажей, механика выносливости и алгоритм поломки автоматов.</p>
+        </div>
+        <div class="news-item">
+            <div class="date">02 февраля 2026</div>
+            <strong>Инициация проекта Steamleaf</strong>
+            <p>Студенты запустили собственный симулятор раздачи листовок. Проект поддержан вузом.</p>
+        </div>
+        <p style="margin-top: 1rem;">🔔 Следите за новостями в Telegram-боте: <a href="https://t.me/Steamleaf" target="_blank">t.me/Steamleaf</a></p>
+    </div>
+
+    <!-- РАЗДЕЛ ГЕЙМПЛЕЙ И ДИЗАЙН -->
+    <div id="gameplay" class="tab-content">
+        <h2>⚙️ ГЕЙМПЛЕЙ, ДИЗАЙН И ТЕХНИЧЕСКИЕ ОСОБЕННОСТИ</h2>
+        <div class="game-grid">
+            <div class="card">
+                <h3>🌆 Мрачный дизайн</h3>
+                <p>Тёмная палитра, грязные оттенки коричневого, ржавый металл. Сочетание 2D-спрайтов персонажей и объёмных 3D-локаций создаёт гнетущую атмосферу.</p>
+            </div>
+            <div class="card">
+                <h3>🎲 Игровые механики</h3>
+                <p>Система выносливости влияет на скорость. Раздача листовок зависит от типа NPC и выбранной реплики. QTE-ивенты увеличивают максимальное количество листовок.</p>
+            </div>
+            <div class="card">
+                <h3>🤖 ИИ и Диалоги</h3>
+                <p>Репутация игрока влияет на вероятность успешной раздачи. Реализовано через событийную модель Unity/C# с центральным менеджером диалогов.</p>
+            </div>
+            <div class="card">
+                <h3>🎛️ Технический стек</h3>
+                <p>Unity 2022 LTS, C#, GitHub. Все ассеты оригинальны или распространяются по открытым лицензиям. Целевая платформа: ПК.</p>
+            </div>
+        </div>
+        <h3>🔧 Уникальные формулы и алгоритмы</h3>
+        <div class="highlight">
+            🧮 Алгоритм деградации города: вероятность поломки автомата P=0.4, минимум один автомат остаётся активен.<br>
+            📈 QTE-механика: прирост переносимых листовок L_new = L_base + n<br>
+            🚶 Модификаторы статусов: «Слабость» — скорость ×0.9; «Скорость» — скорость ×1.2.
+        </div>
+        <div style="margin-top: 1.5rem;">
+            <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank" class="btn-drive">📁 Скачать концепт-арты (Google Drive)</a>
+            <a href="https://t.me/Steamleaf" target="_blank" class="btn-telegram">💬 Присоединиться к сообществу</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Студенческий проект «Steamleaf — симулятор раздачи листовок» | Московский Политех<br>
+        <span style="color:#5f422b;">⚙️ Мрачный инди-симулятор. Ни одна листовка не будет роздана без боли.</span></p>
+    </footer>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    function switchTab(tabId) {
+        contents.forEach(content => content.classList.remove('active-content'));
+        document.getElementById(tabId)?.classList.add('active-content');
+        tabs.forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.tab-btn[data-tab="${tabId}"]`)?.classList.add('active');
+    }
+
+    tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tabId = btn.getAttribute('data-tab');
+            if(tabId) switchTab(tabId);
+        });
+    });
+
+    // проверка hash при загрузке
+    const hash = window.location.hash.substring(1);
+    if(['main','team','news','gameplay'].includes(hash)) switchTab(hash);
+    else switchTab('main');
+</script>
+</body>
+</html>
