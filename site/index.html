@@ -3,635 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Steamleaf — Симулятор раздачи листовок. Социальный симулятор про уличного промоутера. Сатира, выживание и абсурд городской рутины.">
-    <meta name="theme-color" content="#0a0a0a">
-    <title>Steamleaf — Симулятор раздачи листовок | Промоутер</title>
-    
-    <style>
-        /* ============================================
-           RESET И БАЗОВЫЕ СТИЛИ
-        ============================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* ============================================
-           ОСНОВНЫЕ ПЕРЕМЕННЫЕ
-        ============================================ */
-        :root {
-            --bg-dark: #0a0a0a;
-            --bg-medium: #0f0f0f;
-            --bg-card: #151515;
-            --text-light: #e0d8cc;
-            --text-gray: #9a9a9a;
-            --text-muted: #7a6a5a;
-            --accent-orange: #c48a5a;
-            --accent-brown: #8b5a2b;
-            --accent-light: #e0b080;
-            --accent-hover: #f0c090;
-            --border-dark: #2a2a2a;
-            --border-brown: #3a2a1a;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
-            color: var(--text-light);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-            position: relative;
-        }
-
-        /* Граффити-текстура фона */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%23ffffff' fill-opacity='0.02' d='M70 80 L90 40 L110 80 L100 120 L80 120 Z M150 150 L170 120 L180 150 L160 170 Z M30 160 L50 130 L60 165 L40 180 Z'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            opacity: 0.3;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ============================================
-           КОНТЕЙНЕР
-        ============================================ */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: rgba(15, 15, 15, 0.92);
-            backdrop-filter: blur(2px);
-            border-radius: 24px;
-            padding: 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(196, 138, 90, 0.1);
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* ============================================
-           НАВИГАЦИЯ
-        ============================================ */
-        .nav {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-dark);
-        }
-
-        .nav a {
-            color: var(--text-gray);
-            text-decoration: none;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-            transition: all 0.3s ease;
-            border-radius: 20px;
-        }
-
-        .nav a:hover {
-            color: var(--accent-orange);
-            background: rgba(196, 138, 90, 0.1);
-        }
-
-        /* ============================================
-           ЗАГОЛОВКИ
-        ============================================ */
-        .logo {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .logo h1 {
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            color: var(--accent-orange);
-            font-family: 'Courier New', monospace;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-            letter-spacing: 3px;
-        }
-        
-        .logo p {
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-        }
-
-        h2 {
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
-            color: var(--accent-light);
-            font-family: 'Courier New', monospace;
-            margin: 2rem 0 1rem 0;
-            letter-spacing: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(196,138,90,0.1) 100%);
-            padding: 0.5rem 1rem;
-            border-radius: 0 8px 8px 0;
-        }
-
-        h3 {
-            color: var(--accent-orange);
-            font-family: 'Courier New', monospace;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        /* ============================================
-           ТЕКСТ
-        ============================================ */
-        p {
-            color: var(--text-gray);
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
-        /* ============================================
-           КАРТОЧКИ УЧАСТНИКОВ
-        ============================================ */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .team-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-dark);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-brown);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .team-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .team-card h4 {
-            color: var(--accent-light);
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .team-role {
-            color: var(--accent-orange);
-            font-size: 0.75rem;
-            font-family: monospace;
-            margin-bottom: 0.8rem;
-        }
-
-        .team-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ============================================
-           НОВОСТИ
-        ============================================ */
-        .news-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .news-item {
-            background: var(--bg-medium);
-            border-left: 3px solid var(--accent-orange);
-            padding: 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .news-item:hover {
-            transform: translateX(5px);
-            background: var(--bg-card);
-        }
-
-        .news-date {
-            font-size: 0.7rem;
-            color: var(--accent-orange);
-            font-family: monospace;
-            margin-bottom: 0.3rem;
-        }
-
-        .news-title {
-            font-weight: bold;
-            color: var(--text-light);
-            margin-bottom: 0.3rem;
-        }
-
-        .news-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ============================================
-           ГЕЙМПЛЕЙ СЕКЦИЯ
-        ============================================ */
-        .gameplay-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .gameplay-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-dark);
-            border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .gameplay-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-brown);
-        }
-
-        .gameplay-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .gameplay-card h4 {
-            color: var(--accent-light);
-            margin-bottom: 0.5rem;
-        }
-
-        /* ============================================
-           БОТ СЕКЦИЯ
-        ============================================ */
-        .bot-card {
-            background: linear-gradient(135deg, #0f0f0f 0%, #121212 100%);
-            border: 1px solid var(--border-dark);
-            padding: 1.5rem;
-            margin: 2rem 0;
-            border-left: 4px solid var(--accent-orange);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .bot-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .bot-card h3 {
-            color: var(--accent-orange);
-            margin-bottom: 0.75rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .bot-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #2a1a0a 0%, #1f1307 100%);
-            border: 1px solid var(--accent-brown);
-            color: var(--accent-light);
-            padding: 0.7rem 1.5rem;
-            text-decoration: none;
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 1rem;
-        }
-
-        .bot-button:hover {
-            background: linear-gradient(135deg, #3a2a1a 0%, #2a1a0a 100%);
-            border-color: var(--accent-orange);
-            color: var(--accent-hover);
-            transform: scale(1.03);
-        }
-
-        .report-section {
-            background: rgba(196, 138, 90, 0.05);
-            border: 1px dashed var(--accent-brown);
-            border-radius: 12px;
-            padding: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .report-section h4 {
-            color: var(--accent-light);
-            font-family: monospace;
-            margin-bottom: 0.5rem;
-        }
-
-        .report-section ul {
-            list-style: none;
-            padding-left: 1rem;
-        }
-
-        .report-section li {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            padding: 0.3rem 0;
-            position: relative;
-        }
-
-        .report-section li::before {
-            content: "📄";
-            position: absolute;
-            left: -1.2rem;
-        }
-
-        /* ============================================
-           ВИДЕО
-        ============================================ */
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            background: #000;
-            margin: 1rem 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* ============================================
-           ЦИТАТА
-        ============================================ */
-        .quote {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            color: var(--accent-light);
-            border-top: 1px solid var(--border-dark);
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-        }
-
-        .quote p {
-            margin-bottom: 0;
-            font-style: italic;
-        }
-
-        /* ============================================
-           АНИМАЦИИ
-        ============================================ */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ============================================
-           АДАПТИВНОСТЬ
-        ============================================ */
-        @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-            
-            .container {
-                padding: 1.2rem;
-                border-radius: 16px;
-            }
-            
-            .nav {
-                gap: 0.5rem;
-            }
-            
-            .nav a {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.8rem;
-            }
-            
-            .team-grid, .gameplay-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ============================================
-           СКРОЛЛБАР
-        ============================================ */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-brown);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-orange);
-        }
-    </style>
+    <title>СТИМЛИФ — симулятор раздачи листовок</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- ЛОГОТИП -->
+
+<header>
+    <div class="header-container">
         <div class="logo">
-            <h1>STEAMLEAF</h1>
-            <p>— СИМУЛЯТОР РАЗДАЧИ ЛИСТОВОК —</p>
+            <span class="logo-icon">📄</span>
+            <span class="logo-text">СТИМЛИФ</span>
         </div>
-        
-        <!-- НАВИГАЦИЯ -->
-        <div class="nav">
-            <a href="#game">Главная</a>
-            <a href="#story">Сюжет</a>
-            <a href="#team">Участники</a>
-            <a href="#news">Новости</a>
-            <a href="#gameplay">Геймплей</a>
-            <a href="#bot">Бот</a>
-        </div>
-        
-        <!-- ГЛАВНАЯ / ОПИСАНИЕ ИГРЫ -->
-        <section id="game">
-            <h2>🎮 ОБ ИГРЕ</h2>
-            <p><strong>Steamleaf — симулятор раздачи листовок</strong> — это социальный симулятор, где вы примеряете роль уличного промоутера. Сатира, выживание и весь абсурд городской рутины в одном флаконе.</p>
-            <p>Вы — промоутер. Каждый день вы выходите на улицу с пачкой листовок. Ваша задача — раздать их прохожим, заработать деньги и выполнить план. Но сможете ли вы сохранить рассудок?</p>
-        </section>
-        
-        <!-- ОСНОВНОЙ СЮЖЕТ -->
-        <section id="story">
-            <h2>📖 ОСНОВНОЙ СЮЖЕТ</h2>
-            <p>Вы — обычный человек, который пытается выжить в мегаполисе. Единственный доступный заработок — раздача листовок на улице. Но каждый день приносит новые испытания:</p>
-            <ul style="margin-left: 2rem; color: var(--text-gray); margin-bottom: 1rem;">
-                <li>Агрессивные прохожие</li>
-                <li>Конкуренты-промоутеры</li>
-                <li>Полиция нравов</li>
-                <li>Погодные условия</li>
-                <li>И, конечно, план — 200 листовок за смену!</li>
-            </ul>
-            <p>Сможете ли вы продержаться месяц? Год? Или найдете способ выбраться из этого круга?</p>
-        </section>
-        
-        <!-- УЧАСТНИКИ ПРОЕКТА -->
-        <section id="team">
-            <h2>👥 УЧАСТНИКИ ПРОЕКТА</h2>
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-icon">🎮</div>
-                    <h4>Валерия Субботина</h4>
-                    <div class="team-role">Руководитель проекта / Геймдизайнер</div>
-                    <div class="team-desc">Отвечает за концепцию, механику игры и общую координацию</div>
-                </div>
-                <div class="team-card">
-                    <div class="team-icon">🤖</div>
-                    <h4>Telegram Bot Developer</h4>
-                    <div class="team-role">Разработчик бота</div>
-                    <div class="team-desc">Создание и интеграция Telegram бота для демо-версии игры</div>
-                </div>
-                <div class="team-card">
-                    <div class="team-icon">🎨</div>
-                    <h4>Команда дизайнеров</h4>
-                    <div class="team-role">Визуальные эффекты / UI/UX</div>
-                    <div class="team-desc">Разработка визуального стиля Mixed Media и интерфейсов</div>
-                </div>
-                <div class="team-card">
-                    <div class="team-icon">📝</div>
-                    <h4>Сценаристы</h4>
-                    <div class="team-role">Сюжет / Диалоги</div>
-                    <div class="team-desc">Создание нелинейных диалогов и атмосферы городской рутины</div>
-                </div>
+        <nav>
+            <button class="nav-btn active" data-page="home">Главная</button>
+            <button class="nav-btn" data-page="about">О проекте</button>
+            <button class="nav-btn" data-page="team">Участники</button>
+            <button class="nav-btn" data-page="journal">Журнал</button>
+            <button class="nav-btn" data-page="resources">Ресурсы</button>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- ================= ГЛАВНАЯ СТРАНИЦА ================= -->
+        <div id="home" class="page active-page">
+            <div class="hero">
+                <h1>Симулятор раздачи листовок</h1>
+                <p class="annotation">Аннотация: Игра в жанре социального симулятора, где вы — уличный промоутер. Сатира, выживание и абсурд городской рутины.</p>
             </div>
-        </section>
-        
-        <!-- НОВОСТИ -->
-        <section id="news">
-            <h2>📰 НОВОСТИ</h2>
-            <div class="news-list">
-                <div class="news-item">
-                    <div class="news-date">15 мая 2026</div>
-                    <div class="news-title">Запущен Telegram бот Steamleaf!</div>
-                    <div class="news-desc">Теперь можно поиграть в демо-версию прямо в Telegram. Бот интегрирован в репозиторий проекта.</div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h2>🎮 Суть игры</h2>
+                    <p>Вы — промоутер. Каждый день вы выходите на улицу с пачкой листовок. Ваша задача — раздать их прохожим, заработать деньги и выполнить план.</p>
                 </div>
-                <div class="news-item">
-                    <div class="news-date">10 мая 2026</div>
-                    <div class="news-title">Релиз концепт-арта</div>
-                    <div class="news-desc">Опубликованы первые визуальные концепты игры в стиле Mixed Media.</div>
+                <div class="card">
+                    <h2>📖 Основная идея</h2>
+                    <p>Сатирический взгляд на низкоквалифицированный труд. Исследуйте локации: квартира, метро, улица. Общайтесь с прохожими.</p>
                 </div>
-                <div class="news-item">
-                    <div class="news-date">1 мая 2026</div>
-                    <div class="news-title">Начало разработки</div>
-                    <div class="news-desc">Старт проекта Steamleaf — симулятор раздачи листовок. Формирование команды.</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- ГЕЙМПЛЕЙ -->
-        <section id="gameplay">
-            <h2>⚙️ ГЕЙМПЛЕЙ</h2>
-            <div class="gameplay-grid">
-                <div class="gameplay-card">
-                    <div class="gameplay-icon">💪</div>
-                    <h4>Система выносливости</h4>
-                    <p>У каждого промоутера есть запас энергии. Раздача листовок, беготня по городу и общение с прохожими расходуют силы.</p>
-                </div>
-                <div class="gameplay-card">
-                    <div class="gameplay-icon">🎮</div>
-                    <h4>QTE-инвент «Турник»</h4>
-                    <p>События с быстрыми реакциями. Успеете вовремя нажать — получите бонус. Нет — потеряете листовки.</p>
-                </div>
-                <div class="gameplay-card">
-                    <div class="gameplay-icon">💬</div>
-                    <h4>Нелинейные диалоги</h4>
-                    <p>Каждый прохожий уникален. Ваш выбор влияет на репутацию, доход и сюжетные ветки.</p>
-                </div>
-                <div class="gameplay-card">
-                    <div class="gameplay-icon">💰</div>
-                    <h4>Экономика</h4>
-                    <p>Деньги на еду, энергию для работы, баланс между риском и наградой.</p>
-                </div>
-                <div class="gameplay-card">
-                    <div class="gameplay-icon">🎨</div>
-                    <h4>Mixed Media стиль</h4>
-                    <p>Уникальная визуальная эстетика: коллаж, пиксель-арт и городская атмосфера.</p>
-                </div>
-                <div class="gameplay-card">
-                    <div class="gameplay-icon">🗺️</div>
-                    <h4>Исследование локаций</h4>
-                    <p>Квартира, метро, улица — у каждой зоны свои правила и опасности.</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- TELEGRAM БОТ И ОТЧЕТ -->
-        <section id="bot">
-            <h2>🤖 TELEGRAM БОТ</h2>
-            <div class="bot-card">
-                <h3>
-                    <span>🎮</span> Steamleaf Bot
-                </h3>
-                <p>Демо-версия симулятора раздачи листовок уже доступна в Telegram! Попробуйте себя в роли промоутера прямо сейчас.</p>
-                <a href="https://t.me/Steamleaf" class="bot-button" target="_blank">
-                    🤖 ПЕРЕЙТИ В БОТА @Steamleaf
-                </a>
-                
-                <!-- ИНТЕГРАЦИЯ ОТЧЕТА -->
-                <div class="report-section">
-                    <h4>📋 Индивидуальное задание и отчёт</h4>
-                    <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">В рамках базовой части проекта выполнены следующие работы:</p>
-                    <ul>
-                        <li>Разработка Telegram бота @Steamleaf</li>
-                        <li>Интеграция бота в репозиторий проекта</li>
-                        <li>Создание сайта-лендинга с описанием игры</li>
-                        <li>Написание технической документации</li>
-                        <li>Отчёт о тестировании бота и игровых механик</li>
+                <div class="card">
+                    <h2>⚙️ Ключевые механики</h2>
+                    <ul class="features-list">
+                        <li>Система выносливости и статусы</li>
+                        <li>QTE-ивент «Турник»</li>
+                        <li>Нелинейные диалоги с NPC</li>
+                        <li>Экономика: деньги + энергия</li>
+                        <li>Визуальный стиль Mixed Media</li>
                     </ul>
-                    <p style="font-size: 0.8rem; margin-top: 0.8rem; color: var(--accent-light);">
-                        📍 Отчёт доступен в репозитории: <a href="#" style="color: var(--accent-orange);">/reports/individual_task.md</a>
-                    </p>
                 </div>
             </div>
-        </section>
-        
-        <!-- ВИДЕО / ТРЕЙЛЕР -->
-        <h2>🎬 ТРЕЙЛЕР</h2>
-        <div class="video-wrapper">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Трейлер Steamleaf" allowfullscreen></iframe>
+
+            <div class="quote-block">
+                <p>«Раздайте 200 листовок за смену.<br>Не сойдите с ума».</p>
+                <span>— из геймдизайн-документа</span>
+            </div>
         </div>
-        
-        <!-- ЦИТАТА / СЛОГАН -->
-        <div class="quote">
-            <p>«Раздайте 200 листовок за смену. Не сойдите с ума»</p>
+
+        <!-- ================= СТРАНИЦА "О ПРОЕКТЕ" ================= -->
+        <div id="about" class="page">
+            <div class="hero">
+                <h1>О проекте</h1>
+                <p>Подробное описание игры «Симулятор раздачи листовок»</p>
+            </div>
+            
+            <div class="card">
+                <h2>🎮 Что это за игра</h2>
+                <p>«Симулятор раздачи листовок» — это инди-игра в жанре социального симулятора с элементами сатиры и абсурдного юмора. Вы играете за уличного промоутера, который пытается заработать на жизнь в большом городе.</p>
+            </div>
+
+            <div class="card">
+                <h2>📖 Сюжет</h2>
+                <p>Молодой специалист устраивается промоутером, чтобы свести концы с концами. Каждый новый день — испытание: странные прохожие, требовательный начальник, поломанные вендинговые автоматы. Игроку предстоит раздавать листовки, зарабатывать деньги, повышать выносливость и сталкиваться с абсурдными ситуациями. Сможете ли вы выполнить план и не потерять рассудок?</p>
+            </div>
+
+            <div class="card">
+                <h2>🕹️ Геймплей и механики</h2>
+                <ul class="features-list">
+                    <li><strong>Система выносливости</strong> — у персонажа есть шкала энергии. Статус «Слабость» снижает скорость и выносливость, статус «Скорость» — увеличивает.</li>
+                    <li><strong>QTE-ивент «Турник»</strong> — чем больше подтягиваний, тем больше листовок вы можете носить (L_new = L_base + n).</li>
+                    <li><strong>Нелинейные диалоги</strong> — выбор реплик влияет на реакцию NPC и вашу репутацию.</li>
+                    <li><strong>Экономика</strong> — зарабатывайте деньги и тратьте их на восстановление энергии или апгрейды.</li>
+                    <li><strong>Визуальный стиль Mixed Media</strong> — 2D-спрайты персонажей в 3D-окружении.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🌍 Локации</h2>
+                <p>Игрок может исследовать несколько локаций: квартира (место отдыха и начала дня), метро (атмосфера нуарного триллера), улица (основное место работы, где можно встретить разных NPC).</p>
+            </div>
+
+            <div class="card">
+                <h2>🎯 Цель разработки</h2>
+                <p>Создать полностью играбельный прототип к 25 мая 2026 года, который заполнит пустующую нишу симуляторов работы промоутера с сатирическим уклоном.</p>
+            </div>
+
+            <div class="demo-block">
+                <p>🎬 <strong>Геймплей-видео:</strong> <a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank" rel="noopener noreferrer">Открыть папку с материалами (Google Drive)</a></p>
+            </div>
+        </div>
+
+        <!-- ================= СТРАНИЦА 3: УЧАСТНИКИ ================= -->
+        <div id="team" class="page">
+            <div class="hero">
+                <h1>Команда проекта</h1>
+                <p>26 студентов Московского Политеха. Роль и личный вклад каждого в «Проектную деятельность»</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card"><h3>💻 Программисты</h3><ul class="team-contribution-list"><li><span class="team-name">Николаенков Д.</span> – система диалогов, менеджер квестов</li><li><span class="team-name">Плетнева А.</span> – механика выносливости и модификаторов</li><li><span class="team-name">Попова Е.</span> – ИИ для NPC, патрулирование</li><li><span class="team-name">Субботина В.</span> – аналитика и сбор игровых метрик</li></ul></div>
+                <div class="team-card"><h3>🎨 2D Художники</h3><ul class="team-contribution-list"><li><span class="team-name">Козырева Е.</span> – спрайты персонажей для Billboard-системы</li><li><span class="team-name">Крутяков М.</span> – фоны для диалогов и QTE-сцен</li><li><span class="team-name">Лагутенко А.</span> – иллюстрации для стартового экрана</li><li><span class="team-name">Саяхова Е.</span> – иконки интерфейса (листовки, энергия)</li><li><span class="team-name">Троешестова А.</span> – VFX эффекты QTE (вспышки, пыль)</li><li><span class="team-name">Чиркова В.</span> – концепт-арты персонажей</li></ul></div>
+                <div class="team-card"><h3>🖌️ 3D Художники</h3><ul class="team-contribution-list"><li><span class="team-name">Бирюков А.</span> – локации «Метро» и «Улица»</li><li><span class="team-name">Гагарина Е.</span> – окружение, текстурирование</li><li><span class="team-name">Гарченко Д.</span> – анимация объектов</li><li><span class="team-name">Кныш С.</span> – детали интерьера «Квартира»</li><li><span class="team-name">Смирнова Д.</span> – риггинг и анимация 3D-объектов</li></ul></div>
+                <div class="team-card"><h3>✍️ Сценаристы</h3><ul class="team-contribution-list"><li><span class="team-name">Баранов П.</span> – основной сюжет и диалоговые ветки</li><li><span class="team-name">Попов Д.</span> – юмористические диалоги и альтернативные концовки</li></ul></div>
+                <div class="team-card"><h3>🎮 Гейм-дизайнеры</h3><ul class="team-contribution-list"><li><span class="team-name">Плешков К.</span> – баланс QTE-ивентов и экономики</li><li><span class="team-name">Самодуровский В.</span> – проектирование уровней</li></ul></div>
+                <div class="team-card"><h3>🎨 Графические дизайнеры</h3><ul class="team-contribution-list"><li><span class="team-name">Каримбаева А.</span> – UI/UX, радиальное меню диалогов</li><li><span class="team-name">Кинёв М.</span> – логотип и общий стиль игры</li></ul></div>
+                <div class="team-card"><h3>📢 Менеджеры по продвижению</h3><ul class="team-contribution-list"><li><span class="team-name">Бородина Е.</span> – SMM-стратегия, привлечение тестеров</li><li><span class="team-name">Власова А.</span> – организация презентации на Дне открытых дверей</li><li><span class="team-name">Морев А.</span> – ведение соцсетей и новостных постов</li></ul></div>
+                <div class="team-card"><h3>🔊 Звукорежиссёр</h3><ul class="team-contribution-list"><li><span class="team-name">Кономанина А.</span> – запись атмосферных звуков и музыкальной темы</li></ul></div>
+                <div class="team-card"><h3>📄 Технический писатель</h3><ul class="team-contribution-list"><li><span class="team-name">Лыхин А.</span> – оформление пояснительной записки и документации по ГОСТ</li></ul></div>
+            </div>
+        </div>
+
+        <!-- ================= СТРАНИЦА 4: ЖУРНАЛ ================= -->
+        <div id="journal" class="page">
+            <div class="hero">
+                <h1>Журнал разработки</h1>
+                <p>Новости, прогресс и события проекта</p>
+            </div>
+            <div class="news-list">
+                <div class="news-card"><div class="news-date">15 апреля 2026</div><div class="news-title">📄 Готова пояснительная записка</div><p>Завершена документация. Подтверждена патентная чистота проекта согласно ГОСТ 15.011-96.</p></div>
+                <div class="news-card"><div class="news-date">5 апреля 2026</div><div class="news-title">🎮 Первый играбельный прототип</div><p>MVP включает три локации, систему диалогов и механику выносливости. Ранние тесты показали положительный отклик у 85% игроков.</p></div>
+                <div class="news-card"><div class="news-date">22 марта 2026</div><div class="news-title">🎨 Утверждён визуальный стиль Mixed Media</div><p>2D-спрайты прохожих (Billboard) + 3D-окружение создают уникальную атмосферу нуарного города.</p></div>
+                <div class="news-card"><div class="news-date">10 марта 2026</div><div class="news-title">🏛️ Презентация в Московском Политехе</div><p>Проект представлен на Дне открытых дверей. Получен положительный отклик от Центра проектной деятельности.</p></div>
+            </div>
+        </div>
+
+        <!-- ================= СТРАНИЦА 5: РЕСУРСЫ ================= -->
+        <div id="resources" class="page">
+            <div class="hero">
+                <h1>Ресурсы</h1>
+                <p>Полезные ссылки по проекту</p>
+            </div>
+            <div class="resources-list">
+                <div class="resource-item"><a href="https://github.com/subbotinavaleria18-ai/practice-2026-TgBotPython" target="_blank" rel="noopener noreferrer">📌 GitHub-репозиторий проекта</a></div>
+                <div class="resource-item"><a href="https://partner.steamgames.com/" target="_blank" rel="noopener noreferrer">🎮 Steam Direct (платформа дистрибуции)</a></div>
+                <div class="resource-item"><a href="https://docs.unity.com/" target="_blank" rel="noopener noreferrer">🛠️ Официальная документация Unity</a></div>
+                <div class="resource-item"><a href="https://creativecommons.org/" target="_blank" rel="noopener noreferrer">📜 Лицензии Creative Commons (для ассетов)</a></div>
+                <div class="resource-item"><a href="https://www.fips.ru/" target="_blank" rel="noopener noreferrer">⚖️ ФИПС — патентная чистота</a></div>
+                <div class="resource-item"><a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank" rel="noopener noreferrer">🎬 Материалы игры (геймплей, схемы, квесты)</a></div>
+            </div>
+            <div class="demo-block">
+                <p>📖 <strong>Для углублённого изучения:</strong> «Социология видеоигр» (Салин А.С.), «Геймдизайн: как создать игру» (Смит Д.). Полный список литературы — в пояснительной записке.</p>
+            </div>
         </div>
     </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>Московский Политех | Проектная деятельность — Симулятор раздачи листовок «Стимлиф»</p>
+        <p class="footer-tags">#GameDev #Indie #SocialSimulator #MixedMedia</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.nav-btn');
+        const pages = document.querySelectorAll('.page');
+
+        function switchPage(pageId) {
+            pages.forEach(page => page.classList.remove('active-page'));
+            const activePage = document.getElementById(pageId);
+            if (activePage) activePage.classList.add('active-page');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            const activeButton = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+            if (activeButton) activeButton.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const pageId = this.getAttribute('data-page');
+                if (pageId) switchPage(pageId);
+            });
+        });
+    });
+</script>
 </body>
 </html>
