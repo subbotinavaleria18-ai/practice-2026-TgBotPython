@@ -39,7 +39,7 @@ Telegram-боты — это автоматизированные аккаунт
 
 <img width="481" height="151" alt="Диаграмма без названия drawio (6)" src="https://github.com/user-attachments/assets/2a228043-77e7-4596-8e6a-b134155b3add" />
 
-![Рисунок 1.1.1 — Схема взаимодействия пользователя с Telegram-ботом]
+Рисунок 1.1.1 — Схема взаимодействия пользователя с Telegram-ботом
 
 ### 1.2 Почему aiogram?
 
@@ -63,7 +63,7 @@ Telegram-боты — это автоматизированные аккаунт
 | SimCity Helper | ✅ | ✅ | ✅ | ❌ | ❌ |
 | **Steamleaf (ваш бот)** | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-![Таблица 1.3.1 — Сравнение функционала игровых Telegram-ботов]
+Таблица 1.3.1 — Сравнение функционала игровых Telegram-ботов
 
 ### 1.4 Выводы исследования
 
@@ -82,9 +82,9 @@ Telegram-боты — это автоматизированные аккаунт
 
 Проект построен по классической схеме "Telegram Bot API ↔ aiogram ↔ Обработчики команд".
 
-<img width="682" height="61" alt="Диаграмма без названия drawio (7)" src="https://github.com/user-attachments/assets/f4201939-cedd-4c8c-9d4f-8b837da99f14" />
+<img width="1097" height="246" alt="image" src="https://github.com/user-attachments/assets/e24e8678-b6d7-453c-96e0-4f7752328a39" />
 
-![Рисунок 3 — UML-диаграмма компонентов Telegram-бота](images/3-uml-components.png)
+Рисунок 3 — UML-диаграмма компонентов Telegram-бота
 
 ### 2.2 Структура файлов проекта
 
