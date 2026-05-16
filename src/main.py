@@ -84,7 +84,11 @@ async def cmd_news(message: types.Message):
 # ---------- 5. ГАЛЕРЕЯ ПЕРСОНАЖЕЙ ----------
 @dp.message(Command("gallery"))
 async def cmd_gallery(message: types.Message):
-    await message.answer("🖼 <b>Персонажи Steamleaf</b>", parse_mode="HTML")
+    await message.answer(
+        "🖼 <b>Персонажи Steamleaf</b>\n"
+        "<i>Нажми на персонажа, чтобы узнать о нем подробнее</i> 👇",
+        parse_mode="HTML"
+    )
 
     media = [
         types.InputMediaPhoto(
