@@ -1,4 +1,3 @@
-<img width="1184" height="909" alt="2026-05-16_19-52-55" src="https://github.com/user-attachments/assets/edc7cf21-6e05-4bcc-b7f2-9e0a4ac9e1eb" />
 # Техническое руководство по созданию Telegram-бота "Steamleaf"
 
 ## Оглавление
