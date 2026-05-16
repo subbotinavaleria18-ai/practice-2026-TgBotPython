@@ -36,7 +36,7 @@
 
 Telegram-боты — это автоматизированные аккаунты, управляемые программным кодом. Они взаимодействуют с пользователями через команды, кнопки и сообщения, используя Telegram Bot API.
 
-<img width="481" height="151" alt="Диаграмма без названия drawio (5)" src="https://github.com/user-attachments/assets/d70b2546-6f0f-4bd3-b145-7173760bf790" />
+<img width="481" height="151" alt="Диаграмма без названия drawio (6)" src="https://github.com/user-attachments/assets/1523a06f-7fff-454f-b4bb-9e03d41c9ec8" />
 
 ![Рисунок 1 — Схема взаимодействия пользователя с Telegram-ботом]
 
