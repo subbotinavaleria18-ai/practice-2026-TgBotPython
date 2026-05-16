@@ -298,7 +298,7 @@
             background: #140f0a;
             border-radius: 28px;
             padding: 1.2rem;
-            width: 280px;
+            width: 320px;
             text-align: center;
             border: 1px solid #5e3b1f;
         }
@@ -362,6 +362,46 @@
             color: #c9a87c;
             font-size: 0.8rem;
             font-family: monospace;
+        }
+
+        /* Блок с логотипом и датой выхода в новостях */
+        .release-announcement {
+            background: linear-gradient(135deg, #1f140c, #0a0603);
+            border: 2px solid #c98141;
+            border-radius: 32px;
+            padding: 1.5rem;
+            margin: 1rem 0 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(201, 129, 65, 0.2);
+        }
+
+        .release-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .release-logo img {
+            max-width: 200px;
+            border-radius: 20px;
+            border: 2px solid #c98141;
+            background: #1c130d;
+            padding: 10px;
+        }
+
+        .release-date {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #f3bc84;
+            text-shadow: 0 0 10px #c98141;
+            letter-spacing: 4px;
+            margin: 0.5rem 0;
+        }
+
+        .release-slogan {
+            font-size: 1.2rem;
+            color: #ffdead;
+            font-style: italic;
         }
 
         .btn-drive, .btn-telegram, .btn-resource {
@@ -480,7 +520,8 @@
             .tab-btn { padding: 0.5rem 0.9rem; font-size: 0.8rem; }
             h2 { font-size: 1.5rem; }
             .logo-area h1 { font-size: 1.8rem; }
-            .dev-card { width: 100%; max-width: 280px; }
+            .dev-card { width: 100%; max-width: 320px; }
+            .release-date { font-size: 1.8rem; }
         }
 
         ::selection {
@@ -513,16 +554,13 @@
         <button class="tab-btn" data-tab="telegram">🤖 Telegram Bot</button>
     </div>
 
-    <!-- ГЛАВНАЯ СТРАНИЦА: МЕНЮ ЗАГРУЗКИ + скриншот геймплея -->
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
     <div id="main" class="tab-content active-content">
         <div class="loading-menu">
             <div class="game-title-logo">STEAMLEAF</div>
-            
-            <!-- Скриншот геймплея (IMG_6203.PNG - МЕТРО) -->
             <div class="game-screenshot">
                 <img src="IMG_6203.PNG" alt="Геймплей Steamleaf - Метро">
             </div>
-            
             <div class="menu-options">
                 <div class="menu-btn">▶ Новая игра</div>
                 <div class="menu-btn">📀 Загрузить</div>
@@ -540,11 +578,10 @@
         <p style="margin-top: 1rem;">Добро пожаловать в мрачный симулятор промоутера. Каждый день — выбор: выжить или раздать ещё одну пачку листовок.</p>
     </div>
 
-    <!-- УЧАСТНИКИ: фотографии из IMG_6204 и IMG_6205 -->
+    <!-- УЧАСТНИКИ -->
     <div id="team" class="tab-content">
         <h2>🧩 КЛЮЧЕВЫЕ РАЗРАБОТЧИКИ</h2>
         <div class="team-showcase">
-            <!-- Тех Лидер (IMG_6204.PNG) -->
             <div class="dev-card">
                 <div class="avatar-photo">
                     <img src="IMG_6204.PNG" alt="Тех Лидер">
@@ -556,8 +593,6 @@
                     В проекте полностью отвечает за техническую часть. Прописывает основные механики игры, собирает механики программистов в единый проект. Редактирует геймдизайн игры там, где это требуется.
                 </div>
             </div>
-            
-            <!-- Тип Лидер (IMG_6205.PNG) -->
             <div class="dev-card">
                 <div class="avatar-photo">
                     <img src="IMG_6205.PNG" alt="Тип Лидер">
@@ -584,16 +619,26 @@
         <div class="highlight">⭐ Всего 26 исполнителей, работа в гибких методологиях под руководством двух лидеров.</div>
     </div>
 
-    <!-- НОВОСТИ: добавлена дата выхода 30 июня -->
+    <!-- НОВОСТИ: добавлен логотип и дата выхода -->
     <div id="news" class="tab-content">
         <h2>📰 ПОСЛЕДНИЕ НОВОСТИ ПРОЕКТА</h2>
+        
+        <!-- Блок с логотипом и датой выхода -->
+        <div class="release-announcement">
+            <div class="release-logo">
+                <img src="IMG_6206.PNG" alt="Steamleaf Logo - Релиз">
+            </div>
+            <div class="release-date">30 ИЮНЯ 2026</div>
+            <div class="release-slogan">🍂 ЛИСТОВКИ – ТВОЙ ГОЛОС ГОРОДА! 🍂</div>
+            <div class="highlight" style="margin-top: 1rem; text-align: center;">
+                🎉 Официальный релиз игры «Симулятор раздачи листовок»! Готовьтесь выйти на улицы.
+            </div>
+        </div>
+        
         <div class="news-item">
             <div class="date">🎮 30 ИЮНЯ 2026 — ГЛАВНЫЙ РЕЛИЗ</div>
-            <strong>🔥 STEAMLEAF ВЫХОДИТ 30 ИЮНЯ! 🔥</strong>
-            <p>Официальная дата релиза игры «Симулятор раздачи листовок». Листовки – твой голос города! Готовьтесь погрузиться в мрачную атмосферу уличного маркетинга. Предзаказы уже открыты.</p>
-            <div style="margin-top: 10px; background: #2c1d12; padding: 10px; border-radius: 16px; text-align: center;">
-                <strong>📢 ЛИСТОВКИ – ТВОЙ ГОЛОС ГОРОДА!</strong>
-            </div>
+            <strong>🔥 STEAMLEAF УЖЕ ДОСТУПЕН! 🔥</strong>
+            <p>Игра официально вышла на платформах. Раздавайте листовки, зарабатывайте репутацию и погружайтесь в мрачную атмосферу города. Спасибо всем, кто ждал!</p>
         </div>
         <div class="news-item">
             <div class="date">📢 15 мая 2026</div>
@@ -626,7 +671,7 @@
         <div class="highlight">💡 Все использованные активы — оригинальны или имеют открытые лицензии. Патентная чистота подтверждена.</div>
     </div>
 
-    <!-- TELEGRAM БОТ: скриншот кода IMG_6208.PNG -->
+    <!-- TELEGRAM БОТ -->
     <div id="telegram" class="tab-content">
         <h2>🤖 БОТ @Steamleaf_bot — функционал и интеграция</h2>
         <p>Телеграм-бот сопровождает игроков вне игры: уведомления о квестах, мини-игры, база знаний по NPC.</p>
