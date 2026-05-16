@@ -1,1 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    background: #0b0704;
+    background-image: radial-gradient(circle at 10% 20%, #1e150e 0%, #030201 100%);
+    color: #b87c4f;
+    font-family: 'Segoe UI', 'Courier New', monospace;
+    line-height: 1.5;
+    scroll-behavior: smooth;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 2px, transparent 2px, transparent 8px);
+    z-index: 999;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+/* header */
+.header {
+    border-bottom: 2px solid #5c3b1f;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.site-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.logo-area h1 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #d99e54, #7a3e1a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.logo-area p {
+    color: #6e4a2a;
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+.steam-badge {
+    background: #1f140c;
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    border-left: 4px solid #b87c4f;
+}
+
+.steam-badge a {
+    color: #e2b285;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.steam-badge a:hover {
+    color: #ffcd94;
+}
+
+/* tabs */
+.tabs-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 2rem 0 1.5rem;
+    border-bottom: 1px solid #3c2a1c;
+}
+
+.tab-btn {
+    background: #1c130d;
+    border: none;
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    font-family: inherit;
+    color: #b17a48;
+    cursor: pointer;
+    border-radius: 12px 12px 0 0;
+    transition: 0.2s;
+}
+
+.tab-btn.active {
+    background: #2c1d12;
+    color: #f3bc84;
+    border-bottom: 3px solid #b87c4f;
+}
+
+.tab-btn:hover:not(.active) {
+    background: #2a1b0f;
+    color: #dba06b;
+}
+
+/* tab content */
+.tab-content {
+    display: none;
+    background: rgba(10, 7, 5, 0.7);
+    backdrop-filter: blur(2px);
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid #4a2f1a;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    margin-bottom: 2rem;
+}
+
+.tab-content.active-content {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* typography */
+h2 {
+    font-size: 2rem;
+    border-left: 6px solid #b87c4f;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    color: #e2b285;
+}
+
+h3 {
+    color: #c9915e;
+    margin: 1.2rem 0 0.8rem;
+    font-size: 1.4rem;
+}
+
+p, li {
+    color: #b87c4f;
+    font-size: 1rem;
+}
+
+.highlight {
+    background: #1e140e;
+    border-left: 3px solid #b87c4f;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-style: italic;
+}
+
+/* cards grid */
+.game-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 1.5rem 0;
+}
+
+.card {
+    background: #140e08;
+    border: 1px solid #5a3a1f;
+    border-radius: 24px;
+    padding: 1.2rem;
+    flex: 1 1 240px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+    border-color: #b87c4f;
+    transform: translateY(-5px);
+}
+
+/* member list */
+.member-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.member {
+    background: #19110a;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    border: 1px solid #3f2a18;
+    font-size: 0.9rem;
+}
+
+/* news */
+.news-item {
+    border-bottom: 1px dashed #5b3c20;
+    padding: 1rem 0;
+}
+
+.date {
+    color: #957053;
+    font-size: 0.8rem;
+    font-family: monospace;
+}
+
+/* buttons */
+.btn-drive, .btn-telegram {
+    display: inline-block;
+    background: #2c1d12;
+    padding: 0.7rem 1.3rem;
+    margin: 0.5rem 1rem 0.5rem 0;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #deb887;
+    border: 1px solid #6a4729;
+    transition: 0.2s;
+}
+
+.btn-drive:hover, .btn-telegram:hover {
+    background: #4e341e;
+    color: #fff0db;
+    border-color: #c98141;
+}
+
+/* footer */
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid #3b2a1b;
+    font-size: 0.8rem;
+    color: #624a30;
+}
+
+a {
+    color: #d39257;
+}
+
+@media (max-width: 700px) {
+    .container {
+        padding: 1rem;
+    }
+    .tab-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .logo-area h1 {
+        font-size: 1.8rem;
+    }
+    .site-logo {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+::selection {
+    background: #7a451e;
+    color: #0a0502;
+}
