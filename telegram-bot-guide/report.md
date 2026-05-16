@@ -328,13 +328,18 @@ async def cmd_gallery(message: types.Message):
     ]
     await message.answer_media_group(media)
 ```
+
+
 <img width="979" height="517" alt="2026-05-16_19-29-24" src="https://github.com/user-attachments/assets/8e3a43f4-02ff-48bb-b337-321f39f447ec" />
 
 Рисунок 4.5.1 — Скриншот работы команды /gallery.
 
+
+
 <img width="556" height="776" alt="2026-05-16_19-30-56" src="https://github.com/user-attachments/assets/5bcec2a8-3c20-4318-98bf-bf4c2cf97efe" />
 
 Рисунок 4.5.2 — Скриншот работы команды /gallery.
+
 
 ### 4.6 Полный код бота "Steamleaf"
 ```python
