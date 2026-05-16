@@ -1,1 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>СТИМЛИФ — симулятор раздачи листовок</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <span class="logo-icon">📄</span>
+            <span class="logo-text">СТИМЛИФ</span>
+        </div>
+        <nav>
+            <button class="nav-btn active" data-page="home">Главная</button>
+            <button class="nav-btn" data-page="about">О проекте</button>
+            <button class="nav-btn" data-page="team">Участники</button>
+            <button class="nav-btn" data-page="journal">Журнал</button>
+            <button class="nav-btn" data-page="resources">Ресурсы</button>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <!-- ================= ГЛАВНАЯ СТРАНИЦА ================= -->
+        <div id="home" class="page active-page">
+            <div class="hero">
+                <h1>Симулятор раздачи листовок</h1>
+                <p class="annotation">Игра в жанре социального симулятора, где вы — уличный промоутер. Сатира, выживание и абсурд городской рутины.</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h2>🎮 Суть игры</h2>
+                    <p>Вы — промоутер. Каждый день вы выходите на улицу с пачкой листовок. Ваша задача — раздать их прохожим, заработать деньги и выполнить план.</p>
+                    <a href="#" onclick="showPage('about'); return false;" class="card-link">ПОДРОБНЕЕ →</a>
+                </div>
+                <div class="card">
+                    <h2>📖 Основная идея</h2>
+                    <p>Сатирический взгляд на низкоквалифицированный труд. Исследуйте локации: квартира, метро, улица. Общайтесь с прохожими и делайте выбор.</p>
+                    <a href="#" onclick="showPage('about'); return false;" class="card-link">ПОДРОБНЕЕ →</a>
+                </div>
+                <div class="card">
+                    <h2>⚙️ Ключевые механики</h2>
+                    <ul class="features-list">
+                        <li>Система выносливости и статусы</li>
+                        <li>QTE-ивент «Турник»</li>
+                        <li>Нелинейные диалоги с NPC</li>
+                        <li>Экономика: деньги + энергия</li>
+                        <li>Визуальный стиль Mixed Media</li>
+                    </ul>
+                    <a href="#" onclick="showPage('about'); return false;" class="card-link">ПОДРОБНЕЕ →</a>
+                </div>
+            </div>
+
+            <div class="quote-block">
+                <p>«Раздайте 200 листовок за смену.<br>Не сойдите с ума».</p>
+            </div>
+
+            <!-- ВИДЕО И СКРИНШОТЫ НА ГЛАВНОЙ -->
+            <div class="media-section">
+                <h3 class="media-title">🎬 Геймплей</h3>
+                <div class="video-wrapper">
+                    <iframe src="https://drive.google.com/file/d/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ/preview" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+                <p class="media-caption">Прототип игры — раздача листовок, диалоги, QTE</p>
+            </div>
+        </div>
+
+        <!-- ================= СТРАНИЦА "О ПРОЕКТЕ" ================= -->
+        <div id="about" class="page">
+            <div class="hero">
+                <h1>О проекте</h1>
+                <p>Подробное описание игры «Симулятор раздачи листовок»</p>
+            </div>
+            
+            <div class="card">
+                <h2>🎮 Что это за игра</h2>
+                <p>«Симулятор раздачи листовок» — это инди-игра в жанре социального симулятора с элементами сатиры и абсурдного юмора. Вы играете за уличного промоутера, который пытается заработать на жизнь в большом городе.</p>
+            </div>
+
+            <div class="card">
+                <h2>📖 Сюжет</h2>
+                <p>Молодой специалист устраивается промоутером, чтобы свести концы с концами. Каждый новый день — испытание: странные прохожие, требовательный начальник, поломанные вендинговые автоматы. Игроку предстоит раздавать листовки, зарабатывать деньги, повышать выносливость и сталкиваться с абсурдными ситуациями. Сможете ли вы выполнить план и не потерять рассудок?</p>
+            </div>
+
+            <div class="card">
+                <h2>🕹️ Геймплей и механики</h2>
+                <ul class="features-list">
+                    <li><strong>Система выносливости</strong> — у персонажа есть шкала энергии. Статус «Слабость» снижает скорость и выносливость, статус «Скорость» — увеличивает.</li>
+                    <li><strong>QTE-ивент «Турник»</strong> — чем больше подтягиваний, тем больше листовок вы можете носить (L_new = L_base + n).</li>
+                    <li><strong>Нелинейные диалоги</strong> — выбор реплик влияет на реакцию NPC и вашу репутацию.</li>
+                    <li><strong>Экономика</strong> — зарабатывайте деньги и тратьте их на восстановление энергии или апгрейды.</li>
+                    <li><strong>Визуальный стиль Mixed Media</strong> — 2D-спрайты персонажей в 3D-окружении.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🌍 Локации</h2>
+                <p>Игрок может исследовать несколько локаций: квартира (место отдыха и начала дня), метро (атмосфера нуарного триллера), улица (основное место работы, где можно встретить разных NPC).</p>
+            </div>
+
+            <div class="card">
+                <h2>🎯 Цель разработки</h2>
+                <p>Создать полностью играбельный прототип к 25 мая 2026 года, который заполнит пустующую нишу симуляторов работы промоутера с сатирическим уклоном.</p>
+            </div>
+
+            <!-- СХЕМА / ДИАГРАММА -->
+            <div class="media-section">
+                <h3 class="media-title">📊 Схема игрового цикла</h3>
+                <div class="scheme-placeholder">
+                    <svg width="100%" height="120" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" height="100" fill="#1a1a1a" stroke="#8b5a2b" stroke-width="1"/>
+                        <text x="20" y="25" fill="#c48a5a" font-size="10" font-family="monospace">[ ИГРОВОЙ ЦИКЛ ]</text>
+                        <text x="20" y="45" fill="#9a8a7a" font-size="9">УТРО → ЛОКАЦИЯ УЛИЦА → РАЗДАЧА ЛИСТОВОК</text>
+                        <text x="20" y="60" fill="#9a8a7a" font-size="9">→ QTE «ТУРНИК» → ДИАЛОГ С NPC → ВЕЧЕР</text>
+                        <text x="20" y="80" fill="#6a5a4a" font-size="8">(выносливость → статусы → репутация → доход)</text>
+                    </svg>
+                    <p class="media-caption">Схема основных игровых механик</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= СТРАНИЦА 3: УЧАСТНИКИ ================= -->
+        <div id="team" class="page">
+            <div class="hero">
+                <h1>Команда проекта</h1>
+                <p>26 студентов Московского Политеха. Роль и личный вклад каждого в «Проектную деятельность»</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card"><h3>💻 Программисты</h3><ul class="team-contribution-list"><li><span class="team-name">Николаенков Д.</span> – система диалогов, менеджер квестов</li><li><span class="team-name">Плетнева А.</span> – механика выносливости и модификаторов</li><li><span class="team-name">Попова Е.</span> – ИИ для NPC, патрулирование</li><li><span class="team-name">Субботина В.</span> – аналитика, сбор метрик, Telegram-бот</li></ul></div>
+                <div class="team-card"><h3>🎨 2D Художники</h3><ul class="team-contribution-list"><li><span class="team-name">Козырева Е.</span> – спрайты персонажей для Billboard-системы</li><li><span class="team-name">Крутяков М.</span> – фоны для диалогов и QTE-сцен</li><li><span class="team-name">Лагутенко А.</span> – иллюстрации для стартового экрана</li><li><span class="team-name">Саяхова Е.</span> – иконки интерфейса (листовки, энергия)</li><li><span class="team-name">Троешестова А.</span> – VFX эффекты QTE (вспышки, пыль)</li><li><span class="team-name">Чиркова В.</span> – концепт-арты персонажей</li></ul></div>
+                <div class="team-card"><h3>🖌️ 3D Художники</h3><ul class="team-contribution-list"><li><span class="team-name">Бирюков А.</span> – локации «Метро» и «Улица»</li><li><span class="team-name">Гагарина Е.</span> – окружение, текстурирование</li><li><span class="team-name">Гарченко Д.</span> – анимация объектов</li><li><span class="team-name">Кныш С.</span> – детали интерьера «Квартира»</li><li><span class="team-name">Смирнова Д.</span> – риггинг и анимация 3D-объектов</li></ul></div>
+                <div class="team-card"><h3>✍️ Сценаристы</h3><ul class="team-contribution-list"><li><span class="team-name">Баранов П.</span> – основной сюжет и диалоговые ветки</li><li><span class="team-name">Попов Д.</span> – юмористические диалоги и альтернативные концовки</li></ul></div>
+                <div class="team-card"><h3>🎮 Гейм-дизайнеры</h3><ul class="team-contribution-list"><li><span class="team-name">Плешков К.</span> – баланс QTE-ивентов и экономики</li><li><span class="team-name">Самодуровский В.</span> – проектирование уровней</li></ul></div>
+                <div class="team-card"><h3>🎨 Графические дизайнеры</h3><ul class="team-contribution-list"><li><span class="team-name">Каримбаева А.</span> – UI/UX, радиальное меню диалогов</li><li><span class="team-name">Кинёв М.</span> – логотип и общий стиль игры</li></ul></div>
+                <div class="team-card"><h3>📢 Менеджеры по продвижению</h3><ul class="team-contribution-list"><li><span class="team-name">Бородина Е.</span> – SMM-стратегия, привлечение тестеров</li><li><span class="team-name">Власова А.</span> – организация презентации на Дне открытых дверей</li><li><span class="team-name">Морев А.</span> – ведение соцсетей и новостных постов</li></ul></div>
+                <div class="team-card"><h3>🔊 Звукорежиссёр</h3><ul class="team-contribution-list"><li><span class="team-name">Кономанина А.</span> – запись атмосферных звуков и музыкальной темы</li></ul></div>
+                <div class="team-card"><h3>📄 Технический писатель</h3><ul class="team-contribution-list"><li><span class="team-name">Лыхин А.</span> – оформление пояснительной записки и документации по ГОСТ</li></ul></div>
+            </div>
+        </div>
+
+        <!-- ================= СТРАНИЦА 4: ЖУРНАЛ ================= -->
+        <div id="journal" class="page">
+            <div class="hero">
+                <h1>Журнал разработки</h1>
+                <p>Новости, прогресс и события проекта</p>
+            </div>
+            <div class="news-list">
+                <div class="news-card"><div class="news-date">15 мая 2026</div><div class="news-title">🤖 Telegram-бот «Steamleaf» запущен!</div><p>Создан бот для информирования о проекте. Подписывайтесь: <a href="https://t.me/Steamleaf_bot" target="_blank">@Steamleaf_bot</a></p></div>
+                <div class="news-card"><div class="news-date">15 апреля 2026</div><div class="news-title">📄 Готова пояснительная записка</div><p>Завершена документация. Подтверждена патентная чистота проекта согласно ГОСТ 15.011-96.</p></div>
+                <div class="news-card"><div class="news-date">5 апреля 2026</div><div class="news-title">🎮 Первый играбельный прототип</div><p>MVP включает три локации, систему диалогов и механику выносливости. Ранние тесты показали положительный отклик у 85% игроков.</p></div>
+                <div class="news-card"><div class="news-date">22 марта 2026</div><div class="news-title">🎨 Утверждён визуальный стиль Mixed Media</div><p>2D-спрайты прохожих (Billboard) + 3D-окружение создают уникальную атмосферу нуарного города.</p></div>
+                <div class="news-card"><div class="news-date">10 марта 2026</div><div class="news-title">🏛️ Презентация в Московском Политехе</div><p>Проект представлен на Дне открытых дверей. Получен положительный отклик от Центра проектной деятельности.</p></div>
+            </div>
+        </div>
+
+        <!-- ================= СТРАНИЦА 5: РЕСУРСЫ ================= -->
+        <div id="resources" class="page">
+            <div class="hero">
+                <h1>Ресурсы</h1>
+                <p>Полезные ссылки по проекту</p>
+            </div>
+
+            <!-- БЛОК С ТЕЛЕГРАМ-БОТОМ (индивидуальное задание) -->
+            <div class="bot-card">
+                <h3>🤖 Telegram-бот «Steamleaf»</h3>
+                <p>Бот информирует о новостях проекта, рассказывает об игре и команде. Результат индивидуального задания.</p>
+                <div class="bot-link">
+                    <a href="https://t.me/Steamleaf_bot" target="_blank" class="bot-button">@Steamleaf_bot →</a>
+                </div>
+                <div class="bot-screenshot">
+                    <svg width="100%" height="80" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="300" height="80" fill="#1a1a1a" stroke="#8b5a2b" stroke-width="1"/>
+                        <text x="15" y="30" fill="#c48a5a" font-size="10" font-family="monospace">📱 Telegram-бот</text>
+                        <text x="15" y="50" fill="#9a8a7a" font-size="8">Команды: /start, /about, /news, /team</text>
+                        <text x="15" y="68" fill="#6a5a4a" font-size="7">(скриншот бота можно добавить)</text>
+                    </svg>
+                    <p class="media-caption">Telegram-бот Steamleaf — информация о проекте</p>
+                </div>
+            </div>
+
+            <div class="resources-list">
+                <div class="resource-item"><a href="https://github.com/subbotinavaleria18-ai/practice-2026-TgBotPython" target="_blank" rel="noopener noreferrer">📌 GitHub-репозиторий проекта</a></div>
+                <div class="resource-item"><a href="https://t.me/Steamleaf_bot" target="_blank" rel="noopener noreferrer">🤖 Telegram-бот «Steamleaf»</a></div>
+                <div class="resource-item"><a href="https://partner.steamgames.com/" target="_blank" rel="noopener noreferrer">🎮 Steam Direct (платформа дистрибуции)</a></div>
+                <div class="resource-item"><a href="https://docs.unity.com/" target="_blank" rel="noopener noreferrer">🛠️ Официальная документация Unity</a></div>
+                <div class="resource-item"><a href="https://creativecommons.org/" target="_blank" rel="noopener noreferrer">📜 Лицензии Creative Commons (для ассетов)</a></div>
+                <div class="resource-item"><a href="https://www.fips.ru/" target="_blank" rel="noopener noreferrer">⚖️ ФИПС — патентная чистота</a></div>
+                <div class="resource-item"><a href="https://drive.google.com/drive/folders/1XaTjcPgVoKK3WgRQUe3_sKmzqRe3RHyZ" target="_blank" rel="noopener noreferrer">🎬 Материалы игры (геймплей, схемы, квесты)</a></div>
+            </div>
+
+            <div class="demo-block">
+                <p>📖 <strong>Для углублённого изучения:</strong> «Социология видеоигр» (Салин А.С.), «Геймдизайн: как создать игру» (Смит Д.). Полный список литературы — в пояснительной записке.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>Московский Политех | Проектная деятельность — Симулятор раздачи листовок «Стимлиф»</p>
+        <p class="footer-tags">#GameDev #Indie #SocialSimulator #MixedMedia</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.nav-btn');
+        const pages = document.querySelectorAll('.page');
+
+        function switchPage(pageId) {
+            pages.forEach(page => page.classList.remove('active-page'));
+            const activePage = document.getElementById(pageId);
+            if (activePage) activePage.classList.add('active-page');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            const activeButton = document.querySelector(`.nav-btn[data-page="${pageId}"]`);
+            if (activeButton) activeButton.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.showPage = switchPage;
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const pageId = this.getAttribute('data-page');
+                if (pageId) switchPage(pageId);
+            });
+        });
+    });
+</script>
+</body>
+</html>
