@@ -1,3 +1,4 @@
+<img width="1184" height="909" alt="2026-05-16_19-52-55" src="https://github.com/user-attachments/assets/edc7cf21-6e05-4bcc-b7f2-9e0a4ac9e1eb" />
 # Техническое руководство по созданию Telegram-бота "Steamleaf"
 
 ## Оглавление
@@ -209,7 +210,10 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main())
 ```
-[ИЛЛЮСТРАЦИЯ №6] Сделайте скриншот работающего бота (команда /start и ответ). Сохраните как images/6-bot-working.png
+
+<img width="1184" height="909" alt="2026-05-16_19-52-55" src="https://github.com/user-attachments/assets/ca4f4b9d-1fc8-4597-9c86-a93f9848ffa4" />
+
+Рисунок 3.6.1. — Скриншот работающего бота (команда /start и ответ)
 
 https://images/6-bot-working.png
 
