@@ -98,7 +98,7 @@
 
 Подробное техническое руководство по созданию Telegram-бота на библиотеке aiogram находится в репозитории по пути:
 
-📁 `reports/telegram-bot-guide/report.md`
+📁 `reports/telegram-bot-guide.md`
 
 **Руководство включает:**
 - Пошаговые инструкции
